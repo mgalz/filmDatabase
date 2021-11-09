@@ -6,6 +6,10 @@ express
 mongodb
 request
 
+Other requirements:
+API keys
+a MongoDB Cluster
+
 To run current project:
 - 'npm install' all dependencies,
 - create a 'config.js' file and add your own API keys to be exported to "index.js",

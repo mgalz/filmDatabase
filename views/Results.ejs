@@ -1,0 +1,28 @@
+<% include head %>
+
+	<title>Results Page</title>
+</head>
+<body>
+	<h1 class="style">Search Results</h1>
+	<input type="button" onclick="history.back();" value="Return to Search">
+	<br>
+	<table border="10">
+	  <tr>
+	    <th>Film Title</th>
+	    <th>Film Poster</th>
+	  </tr>
+
+	  <!-- JS Search function with .ejs 'script' tags for returning results on Webpage -->
+	  <% data['Search'].forEach(function(movie){ %>
+
+	  <tr>
+	    <td><%= movie['Title'] %></td>
+	    <td><img src="<%= movie['Poster'] %>" alt=""></td>
+	  </tr>
+
+	  <% }) %>
+
+	</table>
+	<br/>
+</body>
+</html>

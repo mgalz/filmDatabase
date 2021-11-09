@@ -8,5 +8,6 @@ request
 
 To run current project:
 - 'npm install' all dependencies,
-- create a 'config.js' file with your own API keys to be exported to "index.js",
-- run node index.js in terminal 
+- create a 'config.js' file and add your own API keys to be exported to "index.js",
+- add your MongoDB Cluster URL to "config.js" (to be exported to "index.js as well),
+- run 'node index.js' in terminal 

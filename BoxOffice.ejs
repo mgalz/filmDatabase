@@ -1,0 +1,36 @@
+<% include head %>
+
+<title>Box Office</title>
+</head>
+<body>
+	<h1 class="style">Box Office</h1>
+	<input type="button" onclick="history.back();" value="Return to Search">
+	<br>
+	<table border="10">
+	  <tr>
+	    <th>Film Poster</th>
+	    <th>Weekly Rank</th>
+        <th>Title</th>
+        <th>Weekend Earnings</th>
+		<th>Total Gross Earnings</th>
+		<th>Weeks Out</th>
+	  </tr>
+
+	  <!-- JS Search function with .ejs 'script' tags for returning results on Webpage -->
+	  <% data['items'].forEach(function(movie){ %>
+
+	  <tr>
+        <td><img src="<%= movie['image'] %>" alt=""></td>
+	    <td><%= movie['rank'] %></td>
+        <td><%= movie['title'] %></td>
+        <td><%= movie['weekend'] %></td>
+        <td><%= movie['gross'] %></td>
+        <td><%= movie['weeks'] %></td>
+	  </tr>
+
+	  <% }) %>
+
+	</table>
+	<br/>
+</body>
+</html>

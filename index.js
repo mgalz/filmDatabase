@@ -50,6 +50,27 @@ app.get('/Results', function(req, res){
     });
 });
 
+//Box Office - Chilinski
+app.get('/BoxOffice', function(req, res){
+
+    var imdbdata = 'https://imdb-api.com/en/API/BoxOffice/' + imdb_KEY;
+        console.log(imdbdata);
+
+    var client = await MongoClient.connect(url, {useNewUrlParser: true});
+
+    var dbo = client.db("Cluster0");
+
+    var myobj = imdbdata;
+        await dbo.collection('boxOffice').deleteOne(myobj);
+        await dbo.collection("boxOffice").insertOne(myobj);
+
+    var results = await dbo.collection("boxOffice").find({}).sort({_id:-1}).limit(1).toArray();
+
+    var imdb_mongoData = results[0];
+        console.log(imdb_mongoData);
+        res.render('BoxOffice', {data: imdb_mongoData});
+        }); 
+
 app.listen(1000, function(){
     console.log('Web App is now running on Port: 1000');
 });

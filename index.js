@@ -108,7 +108,7 @@ app.get('/Cast', function(req, res){
 
             var tmdb_mongoData = results[0];
 
-            res.render('Cast', {data: tmdb_mongoData});
+            res.render('Cast', {data: {info: tmdb_mongoData, title}});
         
         }
     });   

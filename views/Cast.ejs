@@ -7,6 +7,7 @@
 	<input type="button" onclick="history.back();" value="Return to Search">
     <br>
     <h1>Cast</h1>
+	<h2><%= data['title'] %></h2>
 	<table border="10">
 	  <tr>
 	    <th>Name</th>
@@ -15,7 +16,7 @@
 	  </tr>
 
 	  <!-- JS Search function with .ejs 'script' tags for returning results on Webpage -->
-	  <% data['cast'].forEach(function(person){ %>
+	  <% data.info['cast'].forEach(function(person){ %>
 
 	  <tr>
 	    <td><%= person['name'] %></td>
@@ -38,7 +39,7 @@
 	  </tr>
 
 	  <!-- JS Search function with .ejs 'script' tags for returning results on Webpage -->
-	  <% data['crew'].forEach(function(person){ %>
+	  <% data.info['crew'].forEach(function(person){ %>
 
 	  <tr>
 	    <td><%= person['name'] %></td>

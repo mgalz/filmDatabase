@@ -1,6 +1,6 @@
 const express = require('express');
 const request = require('request');
-const { MongoClient, ConnectionPoolClosedEvent } = require('mongodb');
+const { MongoClient } = require('mongodb');
 const { config } = require('./config.js');
 
 const url = config.MONGO_URL;

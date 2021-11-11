@@ -31,9 +31,9 @@ app.get('/Results', function(req, res){
             var client = await MongoClient.connect(url, {useNewUrlParser: true});
             var dbo = client.db("Cluster0");
             var myobj = omdbData;
-            await dbo.collection("posters").insertOne(myobj);
+            await dbo.collection("movieInfo").insertOne(myobj);
 
-            var results = await dbo.collection("posters").find({}).sort({_id:-1}).limit(1).toArray();
+            var results = await dbo.collection("movieInfo").find({}).sort({_id:-1}).limit(1).toArray();
 
             var omdb_mongoData = results[0];
             console.log(omdb_mongoData);
@@ -80,7 +80,7 @@ app.get('/BoxOffice', function(req, res){
 
 //Cast - Harvey
 app.get('/Cast', function(req, res){
-    var i = req.query.search;
+    var i = req.query.cast_search;
 
     var s = 'http://api.themoviedb.org/3/search/movie?api_key='+ tmdb_KEY +'&query=' + i;
 
@@ -88,9 +88,10 @@ app.get('/Cast', function(req, res){
      if(!err && resp.statusCode == 200){
 
 	var info = JSON.parse(body);
-    console.log(info);
     var movieId = info.results[0].id;
+    var title = info.results[0].original_title;
     console.log(movieId);
+    console.log(title);
     
     var params = 'https://api.themoviedb.org/3/movie/' + movieId + '/credits?' + 'api_key=' + tmdb_KEY + '&language=en-US';
 
@@ -98,7 +99,6 @@ app.get('/Cast', function(req, res){
         if(!err && resp.statusCode == 200){
 
             var tmdbData = JSON.parse(body)
-	        console.log(tmdbData);
             var client = await MongoClient.connect(url, {useNewUrlParser: true});
             var dbo = client.db("Cluster0");
             var myobj = tmdbData;
@@ -107,7 +107,6 @@ app.get('/Cast', function(req, res){
             var results = await dbo.collection("cast").find({}).sort({_id:-1}).limit(1).toArray();
 
             var tmdb_mongoData = results[0];
-            console.log(tmdb_mongoData);
 
             res.render('Cast', {data: tmdb_mongoData});
         

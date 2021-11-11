@@ -1,6 +1,6 @@
 <% include head %>
 
-	<title>Results Page</title>
+	<title>Results</title>
 </head>
 <body>
 	<h1 class="style">Search Results</h1>
@@ -8,16 +8,21 @@
 	<br>
 	<table border="10">
 	  <tr>
-	    <th>Film Title</th>
 	    <th>Film Poster</th>
+	    <th>Film Title</th>
+		<th>Film Year</th>
+		<th>IMDB ID</th>
+		
 	  </tr>
 
 	  <!-- JS Search function with .ejs 'script' tags for returning results on Webpage -->
 	  <% data['Search'].forEach(function(movie){ %>
 
 	  <tr>
+		<td><img src="<%= movie['Poster'] %>" alt=""></td>
 	    <td><%= movie['Title'] %></td>
-	    <td><img src="<%= movie['Poster'] %>" alt=""></td>
+		<td><%= movie['Year'] %></td>
+		<td><%= movie['imdbID'] %></td>
 	  </tr>
 
 	  <% }) %>

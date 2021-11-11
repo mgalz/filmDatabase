@@ -1,10 +1,56 @@
 <% include head %>
 
-<title>Cast</title>
+<title>Cast & Crew</title>
 </head>
 <body>
-	<h1 class="style">Cast</h1>
+	<h1 class="style">Cast & Crew</h1>
 	<input type="button" onclick="history.back();" value="Return to Search">
-    <p>Test Page: Check console!</p>
+    <br>
+    <h1>Cast</h1>
+	<table border="10">
+	  <tr>
+	    <th>Name</th>
+	    <th>Character</th>
+        <th>Popularity</th>
+	  </tr>
+
+	  <!-- JS Search function with .ejs 'script' tags for returning results on Webpage -->
+	  <% data['cast'].forEach(function(person){ %>
+
+	  <tr>
+	    <td><%= person['name'] %></td>
+	    <td><%= person['character'] %></td>
+        <td><%= person['popularity'] %></td>
+	  </tr>
+
+	  <% }) %>
+
+	</table>
+	<br/>
+
+    <h1>Crew</h1>
+	<table border="10">
+	  <tr>
+	    <th>Name</th>
+	    <th>Job</th>
+        <th>Department</th>
+        <th>Popularity</th>
+	  </tr>
+
+	  <!-- JS Search function with .ejs 'script' tags for returning results on Webpage -->
+	  <% data['crew'].forEach(function(person){ %>
+
+	  <tr>
+	    <td><%= person['name'] %></td>
+	    <td><%= person['job'] %></td>
+        <td><%= person['department'] %></td>
+        <td><%= person['popularity'] %></td>
+	  </tr>
+
+	  <% }) %>
+
+	</table>
+
+
 </body>
 </html>

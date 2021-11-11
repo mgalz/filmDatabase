@@ -18,6 +18,7 @@ app.get('/', function(req, res){
     res.render('Search');
 });
 
+//General movie info - Mike G
 app.get('/Results', function(req, res){
     var i = req.query.search;
 

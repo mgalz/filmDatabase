@@ -1,6 +1,6 @@
 const express = require('express');
 const request = require('request');
-const { MongoClient } = require('mongodb');
+const { MongoClient, ConnectionPoolClosedEvent } = require('mongodb');
 const { config } = require('./config.js');
 
 const url = config.MONGO_URL;
@@ -50,7 +50,7 @@ app.get('/Results', function(req, res){
     });
 });
 
-//Box Office - Chilinski - 'github test'
+//Box Office - Chilinski
 app.get('/BoxOffice', function(req, res){
 
     var params = 'https://imdb-api.com/en/API/BoxOffice/' + imdb_KEY;
@@ -77,6 +77,45 @@ app.get('/BoxOffice', function(req, res){
             }
         });
     });
+
+//Cast - Harvey
+app.get('/Cast', function(req, res){
+    var i = req.query.search;
+
+    var s = 'http://api.themoviedb.org/3/search/movie?api_key='+ tmdb_KEY +'&query=' + i;
+
+    request(s, async function(err, resp, body){
+     if(!err && resp.statusCode == 200){
+
+	var info = JSON.parse(body);
+    console.log(info);
+    var movieId = info.results[0].id;
+    console.log(movieId);
+    
+    var params = 'https://api.themoviedb.org/3/movie/' + movieId + '/credits?' + 'api_key=' + tmdb_KEY + '&language=en-US';
+
+    await request(params, async function(err, resp, body){
+        if(!err && resp.statusCode == 200){
+
+            var tmdbData = JSON.parse(body)
+	        console.log(tmdbData);
+            var client = await MongoClient.connect(url, {useNewUrlParser: true});
+            var dbo = client.db("Cluster0");
+            var myobj = tmdbData;
+            await dbo.collection("cast").insertOne(myobj);
+
+            var results = await dbo.collection("cast").find({}).sort({_id:-1}).limit(1).toArray();
+
+            var tmdb_mongoData = results[0];
+            console.log(tmdb_mongoData);
+
+            res.render('Cast', {data: tmdb_mongoData});
+        
+        }
+    });   
+    } 
+    });
+});
 
 app.listen(1000, function(){
     console.log('Web App is now running on Port: 1000');

@@ -15,3 +15,5 @@ To run current project:
 - create a 'config.js' file and add your own API keys to be exported to "index.js",
 - add your MongoDB Cluster URL to "config.js" (to be exported to "index.js as well),
 - run 'node index.js' in terminal 
+
+See the running Demo at: https://fullstackmovies.xyz/

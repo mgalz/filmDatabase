@@ -12,7 +12,6 @@ const imdb_KEY = config.IMDB_API_KEY;
 const app = express();
 
 app.set('view engine', 'ejs'); //for .ejs files
-app.use(express.static('public')); //for style.css 
 
 app.get('/', function(req, res){
     res.render('Search');
@@ -42,7 +41,7 @@ app.get('/Results', function(req, res){
             var response = await omdb_mongoData['Response'];
 
             if (response == 'False') {
-              res.render('Error');
+              res.render('Results_Err');
             }
             else {
             res.render('Results', {data: omdb_mongoData});

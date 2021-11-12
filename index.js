@@ -41,7 +41,7 @@ app.get('/Results', function(req, res){
             var response = await omdb_mongoData['Response'];
 
             if (response == 'False') {
-              res.render('Results_Err');
+              res.render('err_views/Results_Err');
             }
             else {
             res.render('Results', {data: omdb_mongoData});
@@ -136,8 +136,16 @@ app.get('/Reviews', function(req, res){
 
             var nytimes_mongoData = results[0];
             console.log(nytimes_mongoData);
+
+            var results = await nytimes_mongoData['results'];
+            console.log(results);
            
+            if (results == null) {
+                res.render('err_views/Reviews_Err');
+            }
+            else {
             res.render('Reviews', {data: nytimes_mongoData});
+            }
             
         } 
     });

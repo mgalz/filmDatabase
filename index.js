@@ -117,6 +117,34 @@ app.get('/Cast', function(req, res){
     });
 });
 
+//Jorge Vergara
+app.get('/Reviews', function(req, res){
+    var i = req.query.search;
+
+    var params = 'https://api.nytimes.com/svc/movies/v2/reviews/search.json?query='+ i +'&api-key='+ ny_times_KEY;
+
+   request(params, async function(err, resp, body){
+        if(!err && resp.statusCode == 200){
+          
+            var NYtimesdata = JSON.parse(body)
+
+            var client = await MongoClient.connect(url, {useNewUrlParser: true});
+            var dbo = client.db("Cluster0");
+            var myobj = NYtimesdata;
+            await dbo.collection("reviews").insertOne(myobj);
+
+            var results = await dbo.collection("reviews").find({}).sort({_id:-1}).limit(1).toArray();
+
+            var nytimes_mongoData = results[0];
+            console.log(nytimes_mongoData);
+           
+            res.render('Reviews', {data: nytimes_mongoData});
+            
+        } 
+    });
+});
+
+
 app.listen(1000, function(){
     console.log('Web App is now running on Port: 1000');
 });

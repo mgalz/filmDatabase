@@ -1,0 +1,43 @@
+<% include head %>
+
+	<title>Reviews</title>
+</head>
+<body>
+	<h1 class="style">Search Results</h1>
+	<input type="button" onclick="history.back();" value="Return to Search">
+	<br>
+	<table border="10">
+	  <tr>
+		<th>Film Title</th>
+        <th>MPAA Rating</th>
+        <th>Critics Pick</th>
+        <th>Reviewed By:</th>
+        <th>Review Headline</th>
+        <th>Summary</th>
+        <th>Publication Date</th>
+        <td>Date Updated:</td>
+        <th>Film Opening Date:</th>
+
+	  </tr>
+
+	  <!-- JS Search function with .ejs 'script' tags for returning results on Webpage -->
+	  <% data['results'].forEach(function(movie){ %>
+
+	  <tr>
+	    <td><%= movie['display_title'] %></td>
+		<td><%= movie['mpaa_rating'] %></td>
+		<td><%= movie['critics_pick'] %></td>
+        <td><%= movie['byline'] %></td>
+        <td><%= movie['headline'] %></td>
+        <td><%= movie['summary_short'] %></td>
+        <td><%= movie['publication_date'] %></td>
+        <td><%= movie['date_updated'] %></td>
+        <td><%= movie['opening_date'] %></td>
+	  </tr>
+
+	  <% }) %>
+
+	</table>
+	<br/>
+</body>
+</html>

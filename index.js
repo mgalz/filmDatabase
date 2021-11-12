@@ -119,7 +119,7 @@ app.get('/Cast', function(req, res){
 
 //Jorge Vergara
 app.get('/Reviews', function(req, res){
-    var i = req.query.search;
+    var i = req.query.review_search;
 
     var params = 'https://api.nytimes.com/svc/movies/v2/reviews/search.json?query='+ i +'&api-key='+ ny_times_KEY;
 

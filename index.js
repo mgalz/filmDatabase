@@ -51,7 +51,7 @@ app.get('/Results', function(req, res){
     });
 });
 
-//Box Office - Chilinski - comment test 11/12
+//Box Office - Chilinski
 app.get('/BoxOffice', function(req, res){
 
     var params = 'https://imdb-api.com/en/API/BoxOffice/' + imdb_KEY;

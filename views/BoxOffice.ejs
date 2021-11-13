@@ -82,6 +82,7 @@
 
   <input type="button" onclick="history.back();" value="Home">
 
+  <h2><i>There will<br>be a logo<br>here eventually</i></h2>
   <h1>Box Office</h1><br>
   <h2><i>Find weekly box office info...</i></h2>
 
@@ -95,9 +96,9 @@
 		  <h3><%= movie['rank'] %></h3><br>
 		</div>
 		  <img src="<%= movie['image'] %>" alt="Movie Poster" width=120 height=180 class="center"><br>
-	<div id="title">
+		<div id="title">
 		  <h3><b><i><%= movie['title'] %></i></b></h3><br>
-	</div>
+		</div>
 		  <p>Weekend Earnings: <%= movie['weekend'] %></p><br>
 		  <p>Total Earnings: <%= movie['gross'] %></p><br>
 		  <p>Weeks Out: <%= movie['weeks'] %></p><br>

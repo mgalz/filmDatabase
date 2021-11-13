@@ -31,17 +31,25 @@ app.get('/Results', function(req, res){
             var client = await MongoClient.connect(url, {useNewUrlParser: true});
             var dbo = client.db("Cluster0");
             var myobj = omdbData;
+            await dbo.collection('movieInfo').deleteOne(myobj);
             await dbo.collection("movieInfo").insertOne(myobj);
 
             var results = await dbo.collection("movieInfo").find({}).sort({_id:-1}).limit(1).toArray();
 
             var omdb_mongoData = results[0];
-            console.log(omdb_mongoData);
             
             var response = await omdb_mongoData['Response'];
+            console.log(response);
 
             if (response == 'False') {
-              res.render('err_views/Results_Err');
+                error = await omdb_mongoData['Error'];
+
+                if (error == "Too many results.") {
+                res.render('err_views/Results_Err');
+                }
+                else {
+                res.render('err_views/No_Results_Err')
+                }
             }
             else {
             res.render('Results', {data: omdb_mongoData});
@@ -59,7 +67,6 @@ app.get('/BoxOffice', function(req, res){
         if(!err && resp.statusCode == 200){
 
     var imdbdata = JSON.parse(body);
-        console.log(imdbdata);
 
     var client = await MongoClient.connect(url, {useNewUrlParser: true});
 
@@ -72,13 +79,14 @@ app.get('/BoxOffice', function(req, res){
     var results = await dbo.collection("boxOffice").find({}).sort({_id:-1}).limit(1).toArray();
 
     var imdb_mongoData = results[0];
-        console.log(imdb_mongoData);
+
         res.render('BoxOffice', {data: imdb_mongoData});
-            }
+
+            } 
         });
     });
 
-//Cast - Harvey
+//Cast - Cyril Harvey
 app.get('/Cast', function(req, res){
     var i = req.query.cast_search;
 
@@ -102,6 +110,7 @@ app.get('/Cast', function(req, res){
             var client = await MongoClient.connect(url, {useNewUrlParser: true});
             var dbo = client.db("Cluster0");
             var myobj = tmdbData;
+            await dbo.collection('cast').deleteOne(myobj);
             await dbo.collection("cast").insertOne(myobj);
 
             var results = await dbo.collection("cast").find({}).sort({_id:-1}).limit(1).toArray();
@@ -116,7 +125,7 @@ app.get('/Cast', function(req, res){
     });
 });
 
-//Jorge Vergara
+//Jorge Vergara - Reviews
 app.get('/Reviews', function(req, res){
     var i = req.query.review_search;
 
@@ -130,12 +139,12 @@ app.get('/Reviews', function(req, res){
             var client = await MongoClient.connect(url, {useNewUrlParser: true});
             var dbo = client.db("Cluster0");
             var myobj = NYtimesdata;
+            await dbo.collection('reviews').deleteOne(myobj);
             await dbo.collection("reviews").insertOne(myobj);
 
             var results = await dbo.collection("reviews").find({}).sort({_id:-1}).limit(1).toArray();
 
             var nytimes_mongoData = results[0];
-            console.log(nytimes_mongoData);
 
             var results = await nytimes_mongoData['results'];
             console.log(results);

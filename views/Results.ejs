@@ -1,33 +1,81 @@
 <% include partials/head %>
 
+<style>
+	body {
+	  font-family: Arial, sans-serif;
+	  background-color: #36393f;
+	}
+	p{	
+		text-align: center;
+	  color: #cbcbcc;
+	  font-size: 16px;
+	  margin-top: 2.5px;
+	  margin-bottom: 2.5px;
+	}
+	h1{
+	  text-align: center;
+	  color: #cbcbcc;
+	  margin-top: 2.5px;
+	  margin-bottom: 2.5px;
+	}
+	h2{
+		text-align: center;
+		margin-top: 25px;
+		margin-bottom: 0px;
+		color: #cbcbcc;
+		font-size: 24px;
+	}
+	input{
+		background-color: #566cf5;
+		width: 75px;
+		height: 37.5px;
+		text-align: center;
+	  	color: #cbcbcc;
+		font-size: 12px;
+		border: none;
+		border-radius: 5px;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	}
+	.flexbox-container{
+	  display: flex;
+	  flex-wrap: wrap;
+	  justify-content: space-around;
+	}
+	.flexbox-item{
+	  background-color: #566cf5;
+	  width: 350px;
+	  height: 750px;
+	  border-radius: 10px;
+	  padding: 1px 25px 1px 25px;
+	  margin: 15px 15px 15px 15px;
+	  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	}
+  </style>
+
 	<title>Results</title>
 </head>
 <body>
-	<h1 class="style">Search Results</h1>
-	<input type="button" onclick="history.back();" value="Return to Search">
+	<h1 class="style">Results</h1>
+	<input type="button" onclick="history.back();" value="Home">
 	<br>
-	<table border="10">
-	  <tr>
-	    <th>Film Poster</th>
-	    <th>Film Title</th>
-		<th>Film Year</th>
-		<th>IMDB ID</th>
-		
-	  </tr>
 
-	  <!-- JS Search function with .ejs 'script' tags for returning results on Webpage -->
+	  
 	  <% data['Search'].forEach(function(movie){ %>
+		<div class = "flexbox-container">
+			<section class = "flexbox-item">
+		
+		<table>
+		<tr><p><img src="<%= movie['Poster'] %>" alt=""></p><br></tr>
+	    <tr><p><h2>Title:</h2><%= movie['Title'] %></p><br></tr>
+	    <tr><p><h2>Release Year:</h2><%= movie['Year'] %></p><br></tr>
+		<tr><p><h2>IMDB ID:</h2><%= movie['imdbID'] %></p><br></tr>
+		</table>
 
-	  <tr>
-		<td><img src="<%= movie['Poster'] %>" alt=""></td>
-	    <td><%= movie['Title'] %></td>
-		<td><%= movie['Year'] %></td>
-		<td><%= movie['imdbID'] %></td>
-	  </tr>
+	</section>
+	</div>
 
 	  <% }) %>
-
-	</table>
+	</body>
 	<br/>
 </body>
 </html>

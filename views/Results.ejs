@@ -98,6 +98,9 @@
 	#title{
 		margin-top: 20px;
 	}
+	img {
+		border-radius: 10px;
+	}
   </style>
 
 <title>Results</title>
@@ -116,7 +119,7 @@
 		<% data['Search'].forEach(function(movie){ %>
 			<section class = "flexbox-item">
 		
-				<img src="<%= movie['Poster'] %>" alt="Poster Not Available" class="center">
+				<img src="<%= movie['Poster'] %>" alt="Poster Not Available" onerror=this.src="/image_not_found.jpg" class="center">
 			<div id="title">
 	    		<h4>Title:</h4><h5><i><%= movie['Title'] %></i></h5>
 			</div>
@@ -126,6 +129,10 @@
 			</section>
 		<% }) %>
 	</div>
-</body>
+	<footer>
+		<br><br><br>
+	  <h1><a href="http://www.omdbapi.com/" target="_blank"><img src="/omdb.png" alt="OMDb Logo" width="246" height="92"></a></h1><br><br>
+	  <h2><i>Data is courtesy of OMDb API</i></h2><br><br><br>
+	</footer>
 </body>
 </html>

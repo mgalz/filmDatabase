@@ -12,6 +12,7 @@ const imdb_KEY = config.IMDB_API_KEY;
 const app = express();
 
 app.set('view engine', 'ejs'); // sets view engine for .ejs files
+app.use(express.static('images')); // sets 'images' folder for image use in .ejs files
 
 app.get('/', function(req, res){
     res.render('Search');

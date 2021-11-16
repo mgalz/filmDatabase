@@ -88,7 +88,7 @@ app.get('/BoxOffice', function(req, res){
     });
 });
 
-//Cast & Crew Page: Cyril
+// Cast Page: Cyril
 app.get('/Cast', function(req, res){
     var i = req.query.cast_search;
 

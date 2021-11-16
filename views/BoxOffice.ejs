@@ -10,7 +10,7 @@
 	  color: #cbcbcc;
 	  font-size: 16px;
 	  margin-top: 2.5px;
-	  margin-bottom: 2.5px;
+	  margin-bottom: -15px;
 	}
 	h1{
 	  text-align: center;
@@ -69,6 +69,10 @@
 		margin-top: 35px;
 		margin-bottom: 0px;
 	}
+	#title{
+		margin-top: -20px;
+		margin-bottom: 0px;
+	}
   </style>
   
   <title>Box Office</title>
@@ -78,10 +82,11 @@
 
   <input type="button" onclick="history.back();" value="Home">
 
+  <h2><i>There will be<br>a logo here<br>eventually...</i></h2>
   <h1>Box Office</h1><br>
   <h2><i>Find weekly box office info...</i></h2>
 
-  <h3>Top Ten:</h3>
+  <h3>Top Ten:</h3><br>
 
   <div class="flexbox-container">
 <% data['items'].forEach(function(movie){ %>
@@ -91,7 +96,9 @@
 		  <h3><%= movie['rank'] %></h3><br>
 		</div>
 		  <img src="<%= movie['image'] %>" alt="Movie Poster" width=120 height=180 class="center"><br>
-		  <p><i><%= movie['title'] %></i></p><br>
+		<div id="title">
+		  <h3><b><i><%= movie['title'] %></i></b></h3><br>
+		</div>
 		  <p>Weekend Earnings: <%= movie['weekend'] %></p><br>
 		  <p>Total Earnings: <%= movie['gross'] %></p><br>
 		  <p>Weeks Out: <%= movie['weeks'] %></p><br>

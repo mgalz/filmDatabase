@@ -11,54 +11,55 @@ const imdb_KEY = config.IMDB_API_KEY;
 
 const app = express();
 
-app.set('view engine', 'ejs'); //for .ejs files
+app.set('view engine', 'ejs'); // sets view engine for .ejs files
 
 app.get('/', function(req, res){
     res.render('Search');
 });
 
-//General movie info - Mike G
+// General Film Info Search Page: Mike G.
 app.get('/Results', function(req, res){
     var i = req.query.search;
 
     var params = 'https://www.omdbapi.com/?s=' + i + '&type=movie' + omdb_KEY;
-
-   request(params, async function(err, resp, body){
-        if(!err && resp.statusCode == 200){
+    
+        request(params, async function(err, resp, body){
+            if(!err && resp.statusCode == 200){
           
-            var omdbData = JSON.parse(body)
+                var omdbData = JSON.parse(body)
 
-            var client = await MongoClient.connect(url, {useNewUrlParser: true});
-            var dbo = client.db("Cluster0");
-            var myobj = omdbData;
-            await dbo.collection('movieInfo').deleteOne(myobj);
-            await dbo.collection("movieInfo").insertOne(myobj);
-
-            var results = await dbo.collection("movieInfo").find({}).sort({_id:-1}).limit(1).toArray();
-
-            var omdb_mongoData = results[0];
+                var client = await MongoClient.connect(url, {useNewUrlParser: true});
+                var dbo = client.db("Cluster0");
+                var myobj = omdbData;
             
-            var response = await omdb_mongoData['Response'];
-            console.log(response);
+                await dbo.collection('movieInfo').remove();
+                await dbo.collection("movieInfo").insertOne(myobj);
 
-            if (response == 'False') {
-                error = await omdb_mongoData['Error'];
+                var results = await dbo.collection("movieInfo").find({}).sort({_id:-1}).limit(1).toArray();
 
-                if (error == "Too many results.") {
-                res.render('err_views/Results_Err');
-                }
-                else {
-                res.render('err_views/No_Results_Err')
-                }
-            }
-            else {
-            res.render('Results', {data: omdb_mongoData});
-            }
+                var omdb_mongoData = results[0];
+            
+                var response = await omdb_mongoData['Response'];
+                console.log(response);
+
+                    if (response == 'False') {
+                        error = await omdb_mongoData['Error'];
+
+                        if (error == "Too many results.") {
+                        res.render('err_views/Many_Results_err');
+                    }
+                        else {
+                        res.render('err_views/No_Results_err')
+                    }
+                }   
+                    else {
+                    res.render('Results', {data: omdb_mongoData});
+            }   
         } 
     });
 });
 
-//Box Office - Chilinski
+//Box Office Page: Mike C.
 app.get('/BoxOffice', function(req, res){
 
     var params = 'https://imdb-api.com/en/API/BoxOffice/' + imdb_KEY;
@@ -73,7 +74,8 @@ app.get('/BoxOffice', function(req, res){
     var dbo = client.db("Cluster0");
 
     var myobj = imdbdata;
-        await dbo.collection('boxOffice').deleteOne(myobj);
+
+        await dbo.collection('boxOffice').remove();
         await dbo.collection("boxOffice").insertOne(myobj);
 
     var results = await dbo.collection("boxOffice").find({}).sort({_id:-1}).limit(1).toArray();
@@ -82,13 +84,23 @@ app.get('/BoxOffice', function(req, res){
 
         res.render('BoxOffice', {data: imdb_mongoData});
 
-            } 
-        });
+        } 
     });
+});
 
-//Cast - Cyril Harvey
+// Cast Page: Cyril
 app.get('/Cast', function(req, res){
     var i = req.query.cast_search;
+
+    if (i == "") {
+        res.render('err_views/No_Cast_err');
+    }
+    // err check: checks for empty string
+
+    if (!i.replace(/\s/g, '').length) {
+        res.render('err_views/No_Cast_err');
+    }
+    // err check: checks for string that only contains whitespace
 
     var s = 'http://api.themoviedb.org/3/search/movie?api_key='+ tmdb_KEY +'&query=' + i;
 
@@ -96,10 +108,17 @@ app.get('/Cast', function(req, res){
      if(!err && resp.statusCode == 200){
 
 	var info = JSON.parse(body);
+    check_res = info.results[0];
+
+    if (check_res == undefined) {
+        res.render('err_views/No_Cast_err');
+    }
+    else {
     var movieId = info.results[0].id;
     var title = info.results[0].original_title;
     console.log(movieId);
     console.log(title);
+    }
     
     var params = 'https://api.themoviedb.org/3/movie/' + movieId + '/credits?' + 'api_key=' + tmdb_KEY + '&language=en-US';
 
@@ -110,22 +129,22 @@ app.get('/Cast', function(req, res){
             var client = await MongoClient.connect(url, {useNewUrlParser: true});
             var dbo = client.db("Cluster0");
             var myobj = tmdbData;
-            await dbo.collection('cast').deleteOne(myobj);
+            await dbo.collection('cast').remove();
             await dbo.collection("cast").insertOne(myobj);
 
             var results = await dbo.collection("cast").find({}).sort({_id:-1}).limit(1).toArray();
 
             var tmdb_mongoData = results[0];
 
-            res.render('Cast', {data: {info: tmdb_mongoData, title}});
-        
+            await res.render('Cast', {data: {info: tmdb_mongoData, title}});
+
         }
-    });   
-    } 
+            });   
+        } 
     });
 });
 
-//Jorge Vergara - Reviews
+// Review Page: Jorge
 app.get('/Reviews', function(req, res){
     var i = req.query.review_search;
 
@@ -139,7 +158,7 @@ app.get('/Reviews', function(req, res){
             var client = await MongoClient.connect(url, {useNewUrlParser: true});
             var dbo = client.db("Cluster0");
             var myobj = NYtimesdata;
-            await dbo.collection('reviews').deleteOne(myobj);
+            await dbo.collection('reviews').remove();
             await dbo.collection("reviews").insertOne(myobj);
 
             var results = await dbo.collection("reviews").find({}).sort({_id:-1}).limit(1).toArray();
@@ -147,15 +166,13 @@ app.get('/Reviews', function(req, res){
             var nytimes_mongoData = results[0];
 
             var results = await nytimes_mongoData['results'];
-            console.log(results);
            
             if (results == null) {
-                res.render('err_views/Reviews_Err');
+                res.render('err_views/No_Reviews_err');
             }
             else {
             res.render('Reviews', {data: nytimes_mongoData});
             }
-            
         } 
     });
 });

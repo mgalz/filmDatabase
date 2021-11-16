@@ -13,9 +13,10 @@
         <th>Critics Pick</th>
         <th>Reviewed By:</th>
         <th>Review Headline</th>
-        <th>Summary</th>
+        <th>Article Link:</th>
         <th>Publication Date</th>
-        <td>Date Updated:</td>
+        <th>Date Updated:</th>
+		<th>Plot Summary:</th>
         <th>Film Opening Date:</th>
 
 	  </tr>
@@ -29,9 +30,10 @@
 		<td><%= movie['critics_pick'] %></td>
         <td><%= movie['byline'] %></td>
         <td><%= movie['headline'] %></td>
-        <td><%= movie['summary_short'] %></td>
+		<td><%= movie.link['url'] %></td>
         <td><%= movie['publication_date'] %></td>
         <td><%= movie['date_updated'] %></td>
+		<td><%= movie['summary_short'] %></td>
         <td><%= movie['opening_date'] %></td>
 	  </tr>
 

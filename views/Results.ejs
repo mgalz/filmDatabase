@@ -5,12 +5,12 @@
 	  font-family: Arial, sans-serif;
 	  background-color: #36393f;
 	}
-	p{	
-		text-align: center;
-	  color: #cbcbcc;
-	  font-size: 16px;
-	  margin-top: 2.5px;
-	  margin-bottom: 2.5px;
+	p {
+	text-align: center;
+	color: #cbcbcc;
+	font-size: 16px;
+	margin-top: 2.5px;
+	margin-bottom: 2.5px;
 	}
 	h1{
 	  text-align: center;
@@ -24,6 +24,9 @@
 		margin-bottom: 0px;
 		color: #cbcbcc;
 		font-size: 24px;
+	}
+	h3 {
+		text-align: center;
 	}
 	input{
 		background-color: #566cf5;
@@ -43,8 +46,8 @@
 	}
 	.flexbox-item{
 	  background-color: #566cf5;
-	  width: 350px;
-	  height: 750px;
+	  width: 25%;
+	  height: 175%;
 	  border-radius: 10px;
 	  padding: 1px 25px 1px 25px;
 	  margin: 15px 15px 15px 15px;
@@ -65,10 +68,10 @@
 			<section class = "flexbox-item">
 		
 		<table>
-		<tr><p><img src="<%= movie['Poster'] %>" alt=""></p><br></tr>
-	    <tr><p><h2>Title:</h2><%= movie['Title'] %></p><br></tr>
-	    <tr><p><h2>Release Year:</h2><%= movie['Year'] %></p><br></tr>
-		<tr><p><h2>IMDB ID:</h2><%= movie['imdbID'] %></p><br></tr>
+		<tr><p><img src="<%= movie['Poster'] %>" alt=""></p></tr>
+	    <tr><p><h2>Title:</h2><h3><%= movie['Title'] %></h3></p></tr>
+	    <tr><p><h2>Release Year:</h2><h3><%= movie['Year'] %></h3></p></tr>
+		<tr><p><h2>IMDB ID:</h2><h3><%= movie['imdbID'] %></h3></p></tr>
 		</table>
 
 	</section>

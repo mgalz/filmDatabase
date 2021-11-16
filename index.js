@@ -37,6 +37,8 @@ app.get('/Results', function(req, res){
 
                 var results = await dbo.collection("movieInfo").find({}).sort({_id:-1}).limit(1).toArray();
 
+                await client.close();
+
                 var omdb_mongoData = results[0];
             
                 var response = await omdb_mongoData['Response'];
@@ -79,6 +81,8 @@ app.get('/BoxOffice', function(req, res){
         await dbo.collection("boxOffice").insertOne(myobj);
 
     var results = await dbo.collection("boxOffice").find({}).sort({_id:-1}).limit(1).toArray();
+
+    await client.close();
 
     var imdb_mongoData = results[0];
 
@@ -134,6 +138,8 @@ app.get('/Cast', function(req, res){
 
             var results = await dbo.collection("cast").find({}).sort({_id:-1}).limit(1).toArray();
 
+            await client.close();
+
             var tmdb_mongoData = results[0];
 
             await res.render('Cast', {data: {info: tmdb_mongoData, title}});
@@ -162,6 +168,8 @@ app.get('/Reviews', function(req, res){
             await dbo.collection("reviews").insertOne(myobj);
 
             var results = await dbo.collection("reviews").find({}).sort({_id:-1}).limit(1).toArray();
+
+            await client.close();
 
             var nytimes_mongoData = results[0];
 

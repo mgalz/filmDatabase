@@ -32,7 +32,7 @@ app.get('/Results', function(req, res){
                 var dbo = client.db("Cluster0");
                 var myobj = omdbData;
             
-                await dbo.collection('movieInfo').remove();
+                await dbo.collection('movieInfo').deleteMany({});
                 await dbo.collection("movieInfo").insertOne(myobj);
 
                 var results = await dbo.collection("movieInfo").find({}).sort({_id:-1}).limit(1).toArray();
@@ -77,7 +77,7 @@ app.get('/BoxOffice', function(req, res){
 
     var myobj = imdbdata;
 
-        await dbo.collection('boxOffice').remove();
+        await dbo.collection('boxOffice').deleteMany({});
         await dbo.collection("boxOffice").insertOne(myobj);
 
     var results = await dbo.collection("boxOffice").find({}).sort({_id:-1}).limit(1).toArray();
@@ -98,11 +98,13 @@ app.get('/Cast', function(req, res){
 
     if (i == "") {
         res.render('err_views/No_Cast_err');
+        return(0);
     }
     // err check: checks for empty string
 
     if (!i.replace(/\s/g, '').length) {
         res.render('err_views/No_Cast_err');
+        return(0);
     }
     // err check: checks for string that only contains whitespace
 
@@ -133,7 +135,7 @@ app.get('/Cast', function(req, res){
             var client = await MongoClient.connect(url, {useNewUrlParser: true});
             var dbo = client.db("Cluster0");
             var myobj = tmdbData;
-            await dbo.collection('cast').remove();
+            await dbo.collection('cast').deleteMany({});
             await dbo.collection("cast").insertOne(myobj);
 
             var results = await dbo.collection("cast").find({}).sort({_id:-1}).limit(1).toArray();
@@ -164,7 +166,7 @@ app.get('/Reviews', function(req, res){
             var client = await MongoClient.connect(url, {useNewUrlParser: true});
             var dbo = client.db("Cluster0");
             var myobj = NYtimesdata;
-            await dbo.collection('reviews').remove();
+            await dbo.collection('reviews').deleteMany({});
             await dbo.collection("reviews").insertOne(myobj);
 
             var results = await dbo.collection("reviews").find({}).sort({_id:-1}).limit(1).toArray();

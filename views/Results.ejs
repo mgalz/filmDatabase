@@ -116,7 +116,7 @@
 		<% data['Search'].forEach(function(movie){ %>
 			<section class = "flexbox-item">
 		
-				<img src="<%= movie['Poster'] %>" alt="Poster Not Available" class="center">
+				<img src="<%= movie['Poster'] %>" alt="Poster Not Available" onerror=this.src="/image_not_found.jpg" class="center">
 			<div id="title">
 	    		<h4>Title:</h4><h5><i><%= movie['Title'] %></i></h5>
 			</div>

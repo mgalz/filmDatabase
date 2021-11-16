@@ -89,6 +89,8 @@ app.get('/BoxOffice', function(req, res){
 });
 
 // Cast Page: Cyril
+=======
+>>>>>>> c9dd3da756cbbc2c60b7c0a45db67af2fc6308a9
 app.get('/Cast', function(req, res){
     var i = req.query.cast_search;
 

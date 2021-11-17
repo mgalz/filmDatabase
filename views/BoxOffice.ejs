@@ -38,11 +38,11 @@
 	}
 	input{
 		background-color: #566cf5;
-		width: 75px;
-		height: 37.5px;
+		width: 100px;
+		height: 50px;
 		text-align: center;
 	  	color: #cbcbcc;
-		font-size: 12px;
+		font-size: 15px;
 		font-weight: bold;
 		border: none;
 		border-radius: 5px;
@@ -76,11 +76,11 @@
 }
 	.flexbox-item{
 	  background-color: #566cf5;
-	  width: 300px;
-	  height: 450px;
+	  width: 350px;
+	  height: 500px;
 	  border-radius: 10px;
-	  padding: 1px 25px 1px 25px;
-	  margin: 15px 15px 15px 15px;
+	  padding: 0px 25px 0px 25px;
+	  margin: 25px 15px 25px 15px;
 	  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	}
 	#rank{
@@ -103,7 +103,7 @@
   <h1>Box Office</h1><br>
   <h2><i>Find weekly box office info...</i></h2>
 
-  <h3>Top Ten:</h3><br>
+  <h3>Top 10:</h3><br>
 
   <div class="flexbox-container">
 <% data['items'].forEach(function(movie){ %>
@@ -112,7 +112,7 @@
 		<div id="rank">
 		  <h3><%= movie['rank'] %></h3><br>
 		</div>
-		  <img src="<%= movie['image'] %>" alt="Movie Poster" width=120 height=180 class="center"><br> <!--width/height css conflict?-->
+		  <img src="<%= movie['image'] %>" alt="Movie Poster" height="240px" class="center"><br> <!--width/height css conflict?-->
 		<div id="title">
 		  <h3><b><i><%= movie['title'] %></i></b></h3><br>
 		</div>
@@ -126,7 +126,7 @@
   </main>
   <footer>
 	  <br><br><br>
-	<h1><a href="https://www.imdb.com/" target="_blank"><img src="/imdb.png" alt="IMDb Logo" width="200" height="200"></a></h1><br><br>
+	<h1><a href="https://www.imdb.com/" target="_blank"><img src="/imdb.png" alt="IMDb Logo" width="200px" height="100px"></a></h1><br><br>
 	<h2><i>Data is courtesy of IMDb API</i></h2><br><br><br>
   </footer>
   </body>

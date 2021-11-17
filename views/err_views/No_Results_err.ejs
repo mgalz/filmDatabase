@@ -9,7 +9,7 @@
 	  text-align: center;
 	  color: #cbcbcc;
 	  font-size: 16px;
-	  margin-top: 2.5px;
+	  margin-top: 40px;
 	  margin-bottom: -15px;
 	}
 	h1{
@@ -41,6 +41,11 @@
 		background-color: #6f7276;
 		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	}
+	.center {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	  }
 </style>
 
 <title>Error</title>
@@ -48,6 +53,8 @@
 <body>
     <input type="button" onclick="history.back();" value="Home">
     <br>
-<p><h1>We're sorry, We couldn't find any results that matched your search! Please try again!</h1></p>
+<p><h1>Sorry! We couldn't find any results for that search! :(</h1></p>
+<br>
+<img src="/no_results_found.png" alt="no results found" class="center" width=200 height=200>
     </body>
     </html>

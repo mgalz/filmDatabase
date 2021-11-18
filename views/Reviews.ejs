@@ -86,13 +86,12 @@
 	  border-radius: 10px;
 	  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	}
-	@media(min-width: 468px){
 	.container-1{
 	  display: flex;
 	  flex-wrap: wrap;
+	  align-items: center;
 	  justify-content: space-around;
 	}
-}
 	.flexbox-item-1{
 	  background-color: #566cf5;
 	  width: 17.5%;
@@ -129,10 +128,10 @@
 	<main>
 		<input type="button" onclick="history.back();" value="Home">
 
-		<h2><i>There will be<br>a logo here<br>eventually...</i></h2>
+		<h2><i>There will be<br>a logo here<br>eventually...</i></h2><br>
 		<h1>Reviews</h1><br>
 		<h2><i><b>Find movie review info...</b></i></h2><br>
-		<h1>Results:</h1>
+		<h1>Results</h1>
 
 		<section class="container-1">
 			<% data['results'].forEach(function(movie){ %>
@@ -149,11 +148,11 @@
         <p><b>Reviewed By:</b></p>
 	</div>
 	<div id="reviewee">
-		<h4><%= movie['byline'] %></h4><br><br>
+		<h4><%= movie['byline'] %></h4><br>
 	</div>
         <p><i><%= movie['headline'] %>...</i></p><br><br>
-		<p><b>Plot:</b><br><%= movie['summary_short'] %></p><br><br>
 		<p><a href="<%= movie.link['url'] %>" target="_blank">Full Review</a></p><br><br>
+		<p><b>Plot:</b><br><%= movie['summary_short'] %></p><br><br>
 		<h5>Published <%= movie['publication_date'] %></h5>
         <h5>Updated <%= movie['date_updated'] %></h5><br>
 			</div>

@@ -85,20 +85,18 @@
 	  	border-radius: 10px;
 	  	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	}
-@media(min-width: 468px){
-	.flexbox-container{
+	.container-1{
 		display: flex;
 	  	flex-wrap: wrap;
 		align-items: center;
 	  	justify-content: space-around;
 	}
-}
-	.flexbox-item{
+	.flexbox-item-1{
 	  	background-color: #566cf5;
 	  	width: 20%;
 	  	height: 175%;
 	  	border-radius: 10px;
-	  	padding: 1px 25px 1px 25px;
+	  	padding: 0px 25px 0px 25px;
 	  	margin: 15px 15px 15px 15px;
 	  	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	}
@@ -130,9 +128,9 @@
 
 	<h1>Results</h1>
   
-	<section class = "flexbox-container">
+	<section class = "container-1">
 		<% data['Search'].forEach(function(movie){ %>
-			<div class = "flexbox-item">
+			<div class = "flexbox-item-1">
 		
 				<img src="<%= movie['Poster'] %>" alt="Poster Not Available" onerror=this.src="/image_not_found.jpg" class="center">
 			<div id="title">

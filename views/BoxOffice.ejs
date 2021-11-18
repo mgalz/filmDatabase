@@ -2,21 +2,21 @@
 
 <style>
 	body {
-	  font-family: Arial, sans-serif;
-	  background-color: #36393f;
+	  	font-family: Arial, sans-serif;
+	  	background-color: #36393f;
 	}
 	p{
-	  text-align: center;
-	  color: #cbcbcc;
-	  font-size: 16px;
-	  margin-top: 2.5px;
-	  margin-bottom: -15px;
+	  	text-align: center;
+	  	color: #cbcbcc;
+	  	font-size: 16px;
+	  	margin-top: 2.5px;
+	  	margin-bottom: -15px;
 	}
 	h1{
-	  text-align: center;
-	  color: #cbcbcc;
-	  margin-top: 2.5px;
-	  margin-bottom: 2.5px;
+	  	text-align: center;
+	  	color: #cbcbcc;
+	  	margin-top: 2.5px;
+	  	margin-bottom: 2.5px;
 	}
 	h2{
 		text-align: center;
@@ -65,29 +65,27 @@
 		background-color: #6f7276;
 		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	}
-    .center {
-	  display: block;
-	  margin-left: auto;
-	  margin-right: auto;
-	  width: 50%;
-	  border-radius: 10px;
-	  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    .center-1{
+	  	display: block;
+	 	margin-left: auto;
+	  	margin-right: auto;
+	  	width: 50%;
+	  	border-radius: 10px;
+	  	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	}
-	@media(min-width: 468px){
 	.container-1{
-	  display: flex;
-	  flex-wrap: wrap;
-	  justify-content: space-around;
+	  	display: flex;
+	  	flex-wrap: wrap;
+	  	justify-content: space-around;
 	}
-}
 	.flexbox-item-1{
-	  background-color: #566cf5;
-	  width: 350px;
-	  height: 500px;
-	  border-radius: 10px;
-	  padding: 0px 25px 0px 25px;
-	  margin: 25px 15px 25px 15px;
-	  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	  	background-color: #566cf5;
+	  	width: 350px;
+	  	height: 500px;
+	  	border-radius: 10px;
+	  	padding: 0px 25px 0px 25px;
+	  	margin: 25px 15px 25px 15px;
+	  	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	}
 	#rank{
 		margin-top: 35px;
@@ -109,7 +107,7 @@
   <h1>Box Office</h1><br>
   <h2><i><b>Find weekly box office info...</b></i></h2><br>
 
-  <h1>Top 10:</h1>
+  <h1>Top 10</h1>
 
   <section class="container-1">
 <% data['items'].forEach(function(movie){ %>
@@ -117,7 +115,7 @@
 		<div id="rank">
 		  <h3><%= movie['rank'] %></h3><br>
 		</div>
-		  <img src="<%= movie['image'] %>" alt="Movie Poster" height="240px" class="center"><br>
+		  <img src="<%= movie['image'] %>" alt="Movie Poster" height="240px" class="center-1"><br>
 		<div id="title">
 		  <h3><i><%= movie['title'] %></i></h3><br>
 		</div>

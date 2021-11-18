@@ -114,18 +114,16 @@
   <section class="container-1">
 <% data['items'].forEach(function(movie){ %>
   <div class="flexbox-item-1">
-	<div>
 		<div id="rank">
 		  <h3><%= movie['rank'] %></h3><br>
 		</div>
 		  <img src="<%= movie['image'] %>" alt="Movie Poster" height="240px" class="center"><br>
 		<div id="title">
-		  <h3><b><i><%= movie['title'] %></i></b></h3><br>
+		  <h3><i><%= movie['title'] %></i></h3><br>
 		</div>
 		  <p><b>Weekend Earnings: <i><%= movie['weekend'] %></i></b></p><br>
 		  <p><b>Total Earnings: <i><%= movie['gross'] %></i></b></p><br>
 		  <p><b>Weeks Out: <i><%= movie['weeks'] %></i></b></p><br>
-	</div>
 </div>  
   <% }) %>
   </section>
@@ -133,7 +131,7 @@
   <footer>
 	  <br><br><br>
 	<h1><a href="https://www.imdb.com/" target="_blank"><img src="/imdb.png" alt="IMDb Logo" width="200px" height="100px"></a></h1><br><br>
-	<h2><i>Data is courtesy of IMDb API</i></h2><br><br><br>
+	<h2><i>Data is courtesy of IMDb API</i></h2><br>
   </footer>
   </body>
   </html>  

@@ -48,8 +48,8 @@
 	}
 	input{
 		background-color: #566cf5;
-		width: 150px;
-		height: 56.25px;
+		width: 100px;
+		height: 50px;
 		text-align: center;
 	  	color: #cbcbcc;
 		font-size: 15px;
@@ -112,13 +112,13 @@
 
 	<h2><i>There will be<br>a logo here<br>eventually...</i></h2><br>
 	<h1>General Info</h1><br>
-	<h2><i>Find general movie info...</i></h2>
+	<h2><i><b>Find general movie info...</b></i></h2><br>
 
-	<h3>Results:</h3><br>
+	<h1>Results:</h1>
   
-	<div class = "flexbox-container">
+	<section class = "flexbox-container">
 		<% data['Search'].forEach(function(movie){ %>
-			<section class = "flexbox-item">
+			<div class = "flexbox-item">
 		
 				<img src="<%= movie['Poster'] %>" alt="Poster Not Available" onerror=this.src="/image_not_found.jpg" class="center">
 			<div id="title">
@@ -127,12 +127,12 @@
 	    		<h4>Released:</h4><h5><%= movie['Year'] %></h5>
 				<h4>IMDb id:</h4><h5><%= movie['imdbID'] %></h5>
 
-			</section>
+			</div>
 		<% }) %>
-	</div>
+	</section>
 	<footer>
 		<br><br><br>
-	  <h1><a href="http://www.omdbapi.com/" target="_blank"><img src="/omdb.png" alt="OMDb Logo"></a></h1><br><br>
+	  <h1><a href="http://www.omdbapi.com/" target="_blank"><img src="/omdb.png" alt="OMDb Logo" width="200px" height="100px"></a></h1><br><br>
 	  <h2><i>Data is courtesy of OMDb API</i></h2><br><br><br>
 	</footer>
 </body>

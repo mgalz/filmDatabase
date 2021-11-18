@@ -68,13 +68,13 @@
 	  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	}
 	@media(min-width: 468px){
-	.flexbox-container{
+	.container-1{
 	  display: flex;
 	  flex-wrap: wrap;
 	  justify-content: space-around;
 	}
 }
-	.flexbox-item{
+	.flexbox-item-1{
 	  background-color: #566cf5;
 	  width: 350px;
 	  height: 500px;
@@ -101,28 +101,28 @@
 
   <h2><i>There will be<br>a logo here<br>eventually...</i></h2><br>
   <h1>Box Office</h1><br>
-  <h2><i>Find weekly box office info...</i></h2>
+  <h2><i><b>Find weekly box office info...</b></i></h2><br>
 
-  <h3>Top 10:</h3><br>
+  <h1>Top 10:</h1>
 
-  <div class="flexbox-container">
+  <section class="container-1">
 <% data['items'].forEach(function(movie){ %>
-  <section class="flexbox-item">
+  <div class="flexbox-item-1">
 	<div>
 		<div id="rank">
 		  <h3><%= movie['rank'] %></h3><br>
 		</div>
-		  <img src="<%= movie['image'] %>" alt="Movie Poster" height="240px" class="center"><br> <!--width/height css conflict?-->
+		  <img src="<%= movie['image'] %>" alt="Movie Poster" height="240px" class="center"><br>
 		<div id="title">
 		  <h3><b><i><%= movie['title'] %></i></b></h3><br>
 		</div>
-		  <p>Weekend Earnings: <%= movie['weekend'] %></p><br>
-		  <p>Total Earnings: <%= movie['gross'] %></p><br>
-		  <p>Weeks Out: <%= movie['weeks'] %></p><br>
+		  <p><b>Weekend Earnings: <i><%= movie['weekend'] %></i></b></p><br>
+		  <p><b>Total Earnings: <i><%= movie['gross'] %></i></b></p><br>
+		  <p><b>Weeks Out: <i><%= movie['weeks'] %></i></b></p><br>
 	</div>
-  </section>  
+</div>  
   <% }) %>
-  </div>
+  </section>
   </main>
   <footer>
 	  <br><br><br>

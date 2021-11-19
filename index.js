@@ -2,6 +2,7 @@ const express = require('express');
 const request = require('request');
 const { MongoClient } = require('mongodb');
 const { config } = require('./config.js');
+const e = require('express');
 
 const url = config.MONGO_URL;
 const omdb_KEY = config.OMDB_API_KEY;
@@ -126,13 +127,48 @@ app.get('/Cast', function(req, res){
     console.log(movieId);
     console.log(title);
     }
-    
+
+    var omdb_url = 'https://www.omdbapi.com/?s=' + title + '&type=movie' + omdb_KEY;
+
+    await request(omdb_url, async function(err, resp, body) {
+                       
+    var info = JSON.parse(body);
+    var results = info.Search;
+    var response = await info.Response;
+    var poster;
+
+        if (response == 'False' || title == undefined || title == null) {
+        var Poster = 0;
+        }
+
+        if (Poster == 0) {
+        poster = "No poster available!"
+        }
+        else {
+            for (let i = 0; i < results.length; i++) {
+                var currentTitle = results[i].Title.toLowerCase();
+                var Title = title.toLowerCase();
+                console.log(currentTitle);
+                console.log(Title);
+                if (currentTitle == Title) {
+                    var x = i;
+                    poster = results[x].Poster;
+                    break;
+                }
+                else {
+                    poster = "No poster available!"
+                }
+            }
+        }
+        console.log(poster);
+
     var params = 'https://api.themoviedb.org/3/movie/' + movieId + '/credits?' + 'api_key=' + tmdb_KEY + '&language=en-US';
 
     await request(params, async function(err, resp, body){
         if(!err && resp.statusCode == 200){
 
-            var tmdbData = JSON.parse(body)
+            var tmdbData = JSON.parse(body);
+
             var client = await MongoClient.connect(url, {useNewUrlParser: true});
             var dbo = client.db("Cluster0");
             var myobj = tmdbData;
@@ -145,10 +181,11 @@ app.get('/Cast', function(req, res){
 
             var tmdb_mongoData = results[0];
 
-            await res.render('Cast', {data: {info: tmdb_mongoData, title}});
+            await res.render('Cast', {data: {info: tmdb_mongoData, title, poster}});
 
         }
             });   
+        });
         } 
     });
 });

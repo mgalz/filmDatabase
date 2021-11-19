@@ -16,7 +16,17 @@ app.set('view engine', 'ejs'); // sets view engine for .ejs files
 app.use(express.static('images')); // sets 'images' folder for image use in .ejs files
 
 app.get('/', function(req, res){
-    res.render('Search');
+    
+    var params = 'https://imdb-api.com/en/API/BoxOffice/' + imdb_KEY;
+
+    request(params, async function(err, resp, body){
+        if(!err && resp.statusCode == 200){
+
+    var imdbdata = JSON.parse(body);
+        }
+
+        res.render('Search', {data: imdbdata});
+});
 });
 
 // General Film Info Search Page: Mike G.

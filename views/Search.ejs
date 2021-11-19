@@ -160,6 +160,16 @@
 
 	</section>
 
+	<% data['items'].slice(0, 3).forEach(function(movie){ %>
+
+				<h3><%= movie['rank'] %></h3><br>
+			  </div>
+			  <h3><i><%= movie['title'] %></i></h3><br>
+				<img src="<%= movie['image'] %>" alt="Movie Poster" height="240px"><br>	
+			  </div>
+
+			  <% }) %>
+
 	</main>
 	<footer>
 

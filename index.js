@@ -15,19 +15,20 @@ const app = express();
 app.set('view engine', 'ejs'); // sets view engine for .ejs files
 app.use(express.static('images')); // sets 'images' folder for image use in .ejs files
 
-app.get('/', function(req, res){
+app.get('/', async function(req, res){
     
-    var params = 'https://imdb-api.com/en/API/BoxOffice/' + imdb_KEY;
+    // var params = 'https://imdb-api.com/en/API/BoxOffice/' + imdb_KEY;
 
-    request(params, async function(err, resp, body){
-        if(!err && resp.statusCode == 200){
+    // await request(params, async function(err, resp, body){
+    //     if(!err && resp.statusCode == 200){
+    // var imdbdata = JSON.parse(body);
+    // console.log(imdbdata);
+    // await res.render('Search', {data: imdbdata});
+    //     }
 
-    var imdbdata = JSON.parse(body);
-        }
-
-        res.render('Search', {data: imdbdata});
+    res.render('Search');
 });
-});
+// });
 
 // General Film Info Search Page: Mike G.
 app.get('/Results', function(req, res){

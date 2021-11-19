@@ -32,6 +32,13 @@
 		color: #cbcbcc;
 		font-size: 24px;
 	}
+	h4{
+		text-align: center;
+	  	color: #cbcbcc;
+	 	margin-top: 20px;
+	 	margin-bottom: 2.5px;
+		font-size: 24px;
+	}
 	img{
 		border-radius: 10px;
 		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -83,11 +90,10 @@
 	.flexbox-item1{
 	  	margin: 25px 0px 25px 0px;
 	}
-	/*
 	.container-2{
 	  	display: flex;
-	  	flex-wrap: wrap;
-	  	justify-content: space-around;
+		align-items: flex-end;
+	  	justify-content: center;
 	}
 	.flexbox-item-2{
 	  	background-color: #566cf5;
@@ -98,7 +104,13 @@
 	  	margin: 25px 15px 25px 15px;
 	  	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	}
-	*/
+	.center-1{
+	  	display: block;
+	 	margin-left: auto;
+	  	margin-right: auto;
+	  	border-radius: 10px;
+	  	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	}
 	#rank{
 		margin-top: 35px;
 		margin-bottom: 0px;
@@ -109,7 +121,6 @@
 	}
 	.container-3{
 		display: flex;
-		align-items: flex-end;
 		justify-content: center;
 	}
 	.flexbox-item3{
@@ -157,33 +168,34 @@
 	<form class="flexbox-item1" method="get" action="/BoxOffice">
 		<button type="submit">Box Office</button>
 	</form>
-
 	</section>
 
-	<% data['items'].slice(0, 3).forEach(function(movie){ %>
+	<h4>Weekly Top 3</h4>
 
-				<h3><%= movie['rank'] %></h3><br>
-			  </div>
-			  <h3><i><%= movie['title'] %></i></h3><br>
-				<img src="<%= movie['image'] %>" alt="Movie Poster" height="240px"><br>	
-			  </div>
+	<section class="container-2">
+		<% data['items'].slice(0, 3).forEach(function(movie){ %>
+			<div class="flexbox-item-2">
 
-			  <% }) %>
+				<h3><%= movie['rank'] %>.</h3><br>
+				<img src="<%= movie['image'] %>" alt="Movie Poster" height="240px" class="center-1"><br>
+
+			</div>
+		<% }) %>
+	</section>
 
 	</main>
 	<footer>
 
 		<br><br><br>
 
-		<h2>Powered by:</h2><br>
-
-		<section class="container-3">
-		<a class="flexbox-item3" href="https://www.imdb.com/" target="_blank"><img src="/imdb.png" alt="IMDb Logo" width="200px" height="100px"></a>
-		<a class="flexbox-item3" href="http://www.omdbapi.com/" target="_blank"><img src="/omdb.png" alt="OMDb Logo" width="200px" height="100px"></a>
-		<a class="flexbox-item3" href="https://www.nytimes.com/" target="_blank"><img src="/nytimes.png" alt="NY Times Logo" width="100px" height="100px"></a>
-		<a class="flexbox-item3" href="https://www.themoviedb.org/" target="_blank"><img src="/tmdb.png" alt="TMDB Logo" width="200px" height="100px"></a>
-		</section>
-
+			<h2>Powered by:</h2><br>
+			<section class="container-3">
+			<a class="flexbox-item3" href="https://www.imdb.com/" target="_blank"><img src="/imdb.png" alt="IMDb Logo" width="200px" height="100px"></a>
+			<a class="flexbox-item3" href="http://www.omdbapi.com/" target="_blank"><img src="/omdb.png" alt="OMDb Logo" width="200px" height="100px"></a>
+			<a class="flexbox-item3" href="https://www.nytimes.com/" target="_blank"><img src="/nytimes.png" alt="NY Times Logo" width="100px" height="100px"></a>
+			<a class="flexbox-item3" href="https://www.themoviedb.org/" target="_blank"><img src="/tmdb.png" alt="TMDB Logo" width="200px" height="100px"></a>
+			</section>
+		<br>
 	</footer>
 </body>
 </html>

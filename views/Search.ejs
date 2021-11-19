@@ -170,6 +170,17 @@
 	</form>
 	</section>
 
+	<h4>Weekly Top 3</h4>
+
+    <section class="container-2">
+        <% data['items'].slice(0, 3).forEach(function(movie){ %>
+            <div class="flexbox-item-2">
+
+                <h3><%= movie['rank'] %></h3><br>
+                <img src="<%= movie['image'] %>" alt="Movie Poster" height="240px" class="center-1"><br>
+
+            </div>
+        <% }) %>
 	
 	</section>
 

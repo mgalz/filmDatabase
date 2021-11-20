@@ -25,8 +25,6 @@ app.get('/', async function(req, res){
      console.log(imdbdata);
      await res.render('Search', {data: imdbdata});
          }
-
-    res.render('Search');
 });
  });
 

@@ -1,58 +1,203 @@
 <% include partials/head %>
-
+<style>
+	body {
+	  	font-family: Arial, sans-serif;
+	  	background-color: #36393f;
+	}
+	p{
+	  	text-align: left;
+	  	color: #cbcbcc;
+	  	font-size: 16px;
+	  	margin-top: 2.5px;
+	  	margin-bottom: -15px;
+	}
+	h1{
+	  	text-align: center;
+	  	color: #cbcbcc;
+	  	margin-top: 2.5px;
+	  	margin-bottom: 2.5px;
+	}
+	h2{
+		text-align: center;
+		margin-top: -20px;
+		margin-bottom: 0px;
+		color: #6f7276;
+		font-size: 12px;
+	}
+	h3{
+		text-align: center;
+		color: #cbcbcc;
+		font-size: 32px;
+	}
+	h4{
+		text-align: center;
+		color: #cbcbcc;
+		font-size: 24px;
+	}
+	img{
+		margin-top: 25px;
+		border-radius: 10px;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	}
+	img:hover{
+		box-shadow: none;
+	}
+	img:active{
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	}
+	input{
+		background-color: #566cf5;
+		width: 100px;
+		height: 50px;
+		text-align: center;
+	  	color: #cbcbcc;
+		font-size: 15px;
+		font-weight: bold;
+		border: none;
+		border-radius: 5px;
+		transition: 0.5s;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	}
+	input:hover{
+		cursor: pointer;
+		box-shadow: none;
+		background-color: #566bf5a2;
+	}
+	input:active{
+		cursor: none;
+		background-color: #6f7276;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	}
+	.container-1{
+		display: flex;
+		align-items: flex-end;
+	  	justify-content: center;
+	}
+	.C1-box-1{
+	  	background-color: #566cf5;
+	  	width: 12.5%;
+	  	border-radius: 10px;
+	  	padding: 0px 25px 0px 25px;
+	  	margin: 25px 15px 25px 15px;
+	  	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	}
+	.container-2{
+	  	display: flex;
+	  	flex-direction: column;
+		align-items: center;
+	  	justify-content: space-around;
+	}
+	.C2-box-1{
+		background-color: #566cf5;
+	  	width: 35%;
+	  	border-radius: 10px;
+	  	padding: 15px 35px 15px 35px;
+	  	margin: 25px 25px 25px 25px;
+	  	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	}
+	.C2-box-2{
+		background-color: #566cf5;
+	  	width: 50%;
+	  	border-radius: 10px;
+	  	padding: 15px 35px 15px 35px;
+	  	margin: 25px 25px 25px 25px;
+	  	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	}
+	.f-left{
+		float: left;
+	}
+	.f-right{
+		margin-left: 90%;
+	}
+	.f-right-2{
+		margin-left: 80%;
+	}
+	.f-center{
+		margin-left: 40%;
+	}
+	.margins{
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+	#title{
+		margin-top: 15px;
+		margin-bottom: 25px;
+	}
+	a:link, a:visited{
+    	text-decoration: underline;
+    	color: #cbcbcc;
+  }
+  	a:hover{
+    	text-decoration: none;
+  }
+  </style>
 <title>Cast & Crew</title>
 </head>
 <body>
-	<h1 class="style">Cast & Crew</h1>
-	<input type="button" onclick="history.back();" value="Return to Search">
-    <br>
-    <h1>Cast</h1>
-	<h2><%= data['title'] %></h2>
-	<h2><img src="<%= data['poster'] %>" alt="Poster Not Available" onerror=this.src="/image_not_found.jpg" class="center" height=240px></h2>
-	<table border="10">
-	  <tr>
-	    <th>Name</th>
-	    <th>Character</th>
-        <th>Popularity</th>
-	  </tr>
+	<main>
+	<input type="button" onclick="history.back();" value="Home">
 
-	  <!-- JS Search function with .ejs 'script' tags for returning results on Webpage -->
-	  <% data.info['cast'].forEach(function(person){ %>
+	<h2><i>There will be<br>a logo here<br>eventually...</i></h2><br>
+	<h1>Cast & Crew</h1><br>
+	<h2><i><b>Find cast & crew info...</b></i></h2><br>
+	<h1>Results</h1>
 
-	  <tr>
-	    <td><%= person['name'] %></td>
-	    <td><%= person['character'] %></td>
-        <td><%= person['popularity'] %></td>
-	  </tr>
+<section class="container-1">
+	<div class="C1-box-1">
+	<h1><img src="<%= data['poster'] %>" alt="Poster Not Available" onerror=this.src="/image_not_found.jpg" height=300px></h1>
+	<div id="title">
+	<h1><i><%= data['title'] %></i></h1>
+	</div>
+	</div>
+</section>
 
-	  <% }) %>
+<h4>Jump to <a href="#Crew">Crew</a></h4>
 
-	</table>
-	<br/>
+<section class="container-2">
+		<div class="C2-box-1">
+		<h4><u>Cast</u></h4>
+		<h4 class="f-left">Name</h4>
+		<h4 class="f-center">Character</h4>
+		<h4 class="f-right">Popularity</h4>
+		<!-- JS Search function with .ejs 'script' tags for returning results on Webpage -->
+		<% data.info['cast'].forEach(function(person){ %>
+		<div class="margins">
+	   		<p class="f-left"><%= person['name'] %></p>
+		</div>
+		<div class="margins">
+	    	<p class="f-center"><%= person['character'] %></p>
+		</div>
+		<div class="margins">
+        	<p class="f-right"><%= person['popularity'] %></p>
+		</div>
+		<% }) %>
+		</div>
 
-    <h1>Crew</h1>
-	<table border="10">
-	  <tr>
-	    <th>Name</th>
-	    <th>Job</th>
-        <th>Department</th>
-        <th>Popularity</th>
-	  </tr>
+		<div class="C2-box-2">
+		<h3 id="Crew"><u>Crew</u></h3>
+		<h4 class="f-left">Name</h4>
+		<h4 class="f-center">Job</h4>
+		<h4 class="f-right">Department</h4>
+		<!-- JS Search function with .ejs 'script' tags for returning results on Webpage -->
+		<% data.info['crew'].forEach(function(person){ %>
+		<div class="margins">
+		   <p class="f-left"><%= person['name'] %></p>
+		</div>
+		<div class="margins">
+			<p class="f-center"><%= person['job'] %></p>
+		</div>
+		<div class="margins">
+			<p class="f-right-2"><%= person['department'] %></p>
+		</div>
+		<% }) %>
+		</div>
+</section>
 
-	  <!-- JS Search function with .ejs 'script' tags for returning results on Webpage -->
-	  <% data.info['crew'].forEach(function(person){ %>
-
-	  <tr>
-	    <td><%= person['name'] %></td>
-	    <td><%= person['job'] %></td>
-        <td><%= person['department'] %></td>
-        <td><%= person['popularity'] %></td>
-	  </tr>
-
-	  <% }) %>
-
-	</table>
-
-
+	</main>
+	<footer>
+		<br><br><br>
+	<h1><a href="https://www.themoviedb.org/" target="_blank"><img src="/tmdb.png" alt="TMDB Logo" width="200px" height="100px"></a></h1><br><br>
+	<h2><i>Data is courtesy of IMDb API</i></h2><br>
+	</footer>
 </body>
 </html>

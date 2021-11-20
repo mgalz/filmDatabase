@@ -76,7 +76,7 @@
 		background-color: #6f7276;
 		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	}
-	.center {
+	.center-1{
 	  	display: block;
 		margin-top: 20px;
 	  	margin-left: auto;
@@ -132,7 +132,7 @@
 		<% data['Search'].forEach(function(movie){ %>
 			<div class = "flexbox-item-1">
 		
-				<img src="<%= movie['Poster'] %>" alt="Poster Not Available" onerror=this.src="/image_not_found.jpg" class="center">
+				<img src="<%= movie['Poster'] %>" alt="Poster Not Available" onerror=this.src="/image_not_found.jpg" class="center-1">
 			<div id="title">
 	    		<h6><i><%= movie['Title'] %></i></h6>
 			</div>

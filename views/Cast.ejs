@@ -30,7 +30,7 @@
 		font-size: 32px;
 	}
 	h4{
-		text-align: center;
+		text-align: left;
 		color: #cbcbcc;
 		font-size: 24px;
 		margin-top: 10px;
@@ -38,10 +38,17 @@
 	}
 	h5{
 		text-align: center;
-		margin-top: -20px;
-		margin-bottom: 0px;
+		margin-top: -15px;
+		margin-bottom: -7.5px;
 		color: #535353;
 		font-size: 12px;
+	}
+	h6{
+		text-align: center;
+		color: #cbcbcc;
+		font-size: 24px;
+		margin-top: 10px;
+		margin-bottom: 10px;
 	}
 	img{
 		margin-top: 25px;
@@ -98,7 +105,7 @@
 	}
 	.C2-box-1{
 		background-color: #566cf5;
-	  	width: 35%;
+	  	width: 37.5%;
 	  	border-radius: 10px;
 	  	padding: 15px 35px 15px 35px;
 	  	margin: 25px 25px 25px 25px;
@@ -106,27 +113,54 @@
 	}
 	.C2-box-2{
 		background-color: #566cf5;
-	  	width: 50%;
+	  	width: 55%;
 	  	border-radius: 10px;
 	  	padding: 15px 35px 15px 35px;
 	  	margin: 25px 25px 25px 25px;
 	  	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	}
-	.f-left{
-		float: left;
+	.cast-crew{
+	  	background-color: #566cf5;
+	  	width: 7.5%;
+	  	border-radius: 10px;
+	  	padding: 0px 15px 0px 15px;
+	  	margin: 25px 25px -15px 25px;
+	  	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	}
-	.f-right{
-		margin-left: 90%;
+	#actors{
+		margin-top: 2.5px;
+		margin-bottom: 2.5px;
+		margin-right: 100px;
 	}
-	.f-right-2{
-		margin-left: 80%;
+	#characters{
+		margin-top: 2.5px;
+		margin-bottom: 2.5px;
+		margin-right: 75px;
 	}
-	.f-center{
-		margin-left: 40%;
+	#popularity{
+		margin-top: 2.5px;
+		margin-bottom: 2.5px;
+		margin-right: 75px;
 	}
-	.margins{
-		margin-top: 10px;
-		margin-bottom: 10px;
+	#actors-2{
+		margin-top: 2.5px;
+		margin-bottom: 2.5px;
+		margin-right: 100px;
+	}
+	#characters-2{
+		margin-top: 2.5px;
+		margin-bottom: 2.5px;
+		margin-right: 75px;
+	}
+	#popularity-2{
+		margin-top: 2.5px;
+		margin-bottom: 2.5px;
+		margin-right: 75px;
+	}
+	#department{
+		margin-top: 2.5px;
+		margin-bottom: 2.5px;
+		margin-right: 125px;
 	}
 	#title{
 		margin-top: 15px;
@@ -149,7 +183,7 @@
 	<h2><i>There will be<br>a logo here<br>eventually...</i></h2><br>
 	<h1>Cast & Crew</h1><br>
 	<h2><i><b>Find cast & crew info...</b></i></h2><br>
-	<h1>Results</h1>
+	<h1 id="Top">Results</h1>
 
 <section class="container-1">
 	<div class="C1-box-1">
@@ -161,41 +195,59 @@
 	</div>
 </section>
 
-<h4>Jump to <a href="#Crew">Crew</a></h4>
+<h6>Jump to <a href="#Crew">Crew</a></h6>
+
 
 <section class="container-2">
+
+	<div class="cast-crew">
+	<h3><u>Cast:</u></h3>
+	</div>
+
 		<div class="C2-box-1">
-		<h4><u>Cast</u></h4>
+			<table>
+			<tr>
+			<th><h4><u>Actor</u></h4></th>
+			<th><h4><u>Character</u></h4></th>
+			<th><h4><u>Popularity</u></h4></th>
+			</tr>
+			<% data.info['cast'].forEach(function(person){ %>
 		<!-- JS Search function with .ejs 'script' tags for returning results on Webpage -->
-		<% data.info['cast'].forEach(function(person){ %>
-		<div class="margins">
-	   		<p class="f-left"><%= person['name'] %></p>
-		</div>
-		<div class="margins">
-	    	<p class="f-center"><%= person['character'] %></p>
-		</div>
-		<div class="margins">
-        	<p class="f-right"><%= person['popularity'] %></p>
-		</div>
-		<% }) %>
+			<tr>
+	   		<td><p id="actors"><%= person['name'] %></p></td>
+	    	<td><p id="characters"><%= person['character'] %></p></td>
+        	<td><p id="popularity"><%= person['popularity'] %></p></td>
+			</tr>
+			<% }) %>
+			</table>
 		</div>
 
+		<div class="cast-crew">
+			<h3 id="Crew"><u>Crew:</u></h3>
+			</div>
+
 		<div class="C2-box-2">
-		<h3 id="Crew"><u>Crew</u></h3>
+			<table>
+			<tr>
+			<th><h4><u>Name</u></h4></th>
+			<th><h4><u>Position</u></h4></th>
+			<th><h4><u>Department</u></h4></th>
+			<th><h4><u>Popularity</u></h4></th>
+			</tr>
+			<% data.info['crew'].forEach(function(person){ %>
 		<!-- JS Search function with .ejs 'script' tags for returning results on Webpage -->
-		<% data.info['crew'].forEach(function(person){ %>
-		<div class="margins">
-		   <p class="f-left"><%= person['name'] %></p>
-		</div>
-		<div class="margins">
-			<p class="f-center"><%= person['job'] %></p>
-		</div>
-		<div class="margins">
-			<p class="f-right-2"><%= person['department'] %></p>
-		</div>
-		<% }) %>
+			<tr>
+	   		<td><p id="actors-2"><%= person['name'] %></p></td>
+	    	<td><p id="characters-2"><%= person['job'] %></p></td>
+			<td><p id="department"><%= person['department'] %></p></td>
+        	<td><p id="popularity-2"><%= person['popularity'] %></p></td>
+			</tr>
+			<% }) %>
+			</table>
 		</div>
 </section>
+
+<h6>Back to <a href="#Top">Top</a></h6>
 
 	</main>
 	<footer>

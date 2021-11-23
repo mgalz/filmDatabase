@@ -22,7 +22,6 @@ app.get('/', async function(req, res){
       await request(params, async function(err, resp, body){
          if(!err && resp.statusCode == 200){
      var imdbdata = JSON.parse(body);
-     console.log(imdbdata);
      await res.render('Search', {data: imdbdata});
          }
 });
@@ -133,6 +132,9 @@ app.get('/Cast', function(req, res){
     else {
     var movieId = info.results[0].id;
     var title = info.results[0].original_title;
+    var year = info.results[0].release_date;
+    var movieYear = year.substring(0, 4);
+    console.log(movieYear);
     console.log(movieId);
     console.log(title);
     }
@@ -156,10 +158,14 @@ app.get('/Cast', function(req, res){
         else {
             for (let i = 0; i < results.length; i++) {
                 var currentTitle = results[i].Title.toLowerCase();
+                var currentYear = results[i].Year;
                 var Title = title.toLowerCase();
+                var Year = movieYear;
                 console.log(currentTitle);
                 console.log(Title);
-                if (currentTitle == Title) {
+                console.log(currentYear);
+                console.log(Year);
+                if (currentTitle == Title && currentYear == Year) {
                     var x = i;
                     poster = results[x].Poster;
                     break;

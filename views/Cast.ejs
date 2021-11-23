@@ -54,6 +54,8 @@
 		margin-top: 25px;
 		border-radius: 10px;
 		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		width:80%;
+		height:700%;
 	}
 	img:hover{
 		box-shadow: none;
@@ -61,7 +63,7 @@
 	img:active{
 		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	}
-	input{
+	button{
 		background-color: #566cf5;
 		width: 100px;
 		height: 50px;
@@ -74,12 +76,12 @@
 		transition: 0.5s;
 		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	}
-	input:hover{
+	button:hover{
 		cursor: pointer;
 		box-shadow: none;
 		background-color: #566bf5a2;
 	}
-	input:active{
+	button:active{
 		cursor: none;
 		background-color: #6f7276;
 		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -91,7 +93,8 @@
 	}
 	.C1-box-1{
 	  	background-color: #566cf5;
-	  	width: 12.5%;
+	  	width: 25%;
+		height: 180%;
 	  	border-radius: 10px;
 	  	padding: 0px 25px 0px 25px;
 	  	margin: 25px 15px 25px 15px;
@@ -105,7 +108,7 @@
 	}
 	.C2-box-1{
 		background-color: #566cf5;
-	  	width: 37.5%;
+	  	width: 45%;
 	  	border-radius: 10px;
 	  	padding: 15px 35px 15px 35px;
 	  	margin: 25px 25px 25px 25px;
@@ -113,7 +116,7 @@
 	}
 	.C2-box-2{
 		background-color: #566cf5;
-	  	width: 55%;
+	  	width: 75%;
 	  	border-radius: 10px;
 	  	padding: 15px 35px 15px 35px;
 	  	margin: 25px 25px 25px 25px;
@@ -121,7 +124,7 @@
 	}
 	.cast-crew{
 	  	background-color: #566cf5;
-	  	width: 7.5%;
+	  	width: 15%;
 	  	border-radius: 10px;
 	  	padding: 0px 15px 0px 15px;
 	  	margin: 25px 25px -15px 25px;
@@ -173,11 +176,21 @@
   	a:hover{
     	text-decoration: none;
   }
+.C3-box{
+  background-color: #566cf5;
+	width: 45%;
+	border-radius: 10px;
+	padding: 15px 35px 15px 35px;
+	margin: 25px 25px 25px 25px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
   </style>
 <title>Cast & Crew</title>
 </head>
 <body>
-	<input id="Top" type="button" onclick="history.back();" value="Home">
+	<form method="get" action="/">
+	<button type="submit">Home</button>
+	</form>
 
 	<h2><i>There will be<br>a logo here<br>eventually...</i></h2><br>
 	<h1>Cast & Crew</h1><br>
@@ -186,15 +199,14 @@
 
 <section class="container-1">
 	<div class="C1-box-1">
-	<h1><img src="<%= data['poster'] %>" alt="Poster Not Available" onerror=this.src="/image_not_found.jpg" height=300px></h1>
+	<h1><img src="<%= data['poster'] %>" alt="Poster Not Available" onerror=this.src="/image_not_found.jpg"></h1>
 	<div id="title">
 	<h1><i><%= data['title'] %></i></h1><br>
-	<h5>*Poster may be innacurate*</h5>
 	</div>
 	</div>
-</section>
+	</section>
 
-<h6>Jump to <a href="#Crew">Crew</a></h6>
+<section class="container-1"><div class="C3-box"><h6>Jump to <a href="#Crew">CREW.</a></h6></div></section>
 
 
 <section class="container-2">
@@ -211,7 +223,6 @@
 			<th><h4><u>Popularity</u></h4></th>
 			</tr>
 			<% data.info['cast'].forEach(function(person){ %>
-		<!-- JS Search function with .ejs 'script' tags for returning results on Webpage -->
 			<tr>
 	   		<td><p id="actors"><%= person['name'] %></p></td>
 	    	<td><p id="characters"><%= person['character'] %></p></td>
@@ -221,7 +232,7 @@
 			</table>
 		</div>
 
-		<h6>Back to <a href="#Top">Top</a></h6>
+		<div class="C3-box"><h6>Back to <a href="#Top">TOP.</a></h6></div>
 
 		<div class="cast-crew">
 			<h3 id="Crew"><u>Crew:</u></h3>
@@ -236,7 +247,6 @@
 			<th><h4><u>Popularity</u></h4></th>
 			</tr>
 			<% data.info['crew'].forEach(function(person){ %>
-		<!-- JS Search function with .ejs 'script' tags for returning results on Webpage -->
 			<tr>
 	   		<td><p id="actors-2"><%= person['name'] %></p></td>
 	    	<td><p id="characters-2"><%= person['job'] %></p></td>
@@ -246,9 +256,9 @@
 			<% }) %>
 			</table>
 		</div>
-</section>
+		</section>
 
-<h6>Back to <a href="#Top">Top</a></h6>
+		<section class="container-1"><div class="C3-box"><h6>Back to <a href="#Top">TOP.</a></h6></div></section>
 
 	</main>
 	<footer>

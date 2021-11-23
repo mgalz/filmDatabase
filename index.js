@@ -2,7 +2,6 @@ const express = require('express');
 const request = require('request');
 const { MongoClient } = require('mongodb');
 const { config } = require('./config.js');
-const e = require('express');
 
 const url = config.MONGO_URL;
 const omdb_KEY = config.OMDB_API_KEY;

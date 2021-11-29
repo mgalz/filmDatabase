@@ -68,106 +68,96 @@
 		transition: 0.5s;
 		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	}
-	input:hover{
+	.container-1{
+	  	display: flex;
+	  	flex-wrap: wrap;
+	  	align-items: center;
+	  	justify-content: space-around;
+	}
+	.flexbox-item-1{
+	  	background-color: #566cf5;
+	  	width: 17.5%;
+	  	border-radius: 10px;
+	  	padding: 0px 25px 0px 25px;
+	  	margin: 25px 15px 25px 15px;
+	  	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	}
+	a:link, a:visited{
+    	text-decoration: underline;
+    	color: #cbcbcc;
+  	}
+  	a:hover{
+    	text-decoration: none;
+  	}
+  	#mpaa-rank{
+	 	margin-top: -30px;
+	  	margin-bottom: -20px;
+  	}
+  	#reviewer-tag{
+	  	margin-top: 35px;
+  	}
+  	#reviewee{
+	  	margin-top: -25px;
+  	}
+  	#premeire{
+	  	margin-bottom: -20px;
+  	}
+  	.center-1{
+		display: block;
+  		margin-top: 20px;
+		margin-left: auto;
+		margin-right: auto;
+		width: 50%;
+		border-radius: 10px;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  	}
+  	.searchbar{
+		display: flex;
+		flex-direction: column;
+  		align-items: center;
+  	}		
+	.search-flexbox{
+		margin: 25px 0px 25px 0px;
+	}
+	.text{
+		background-color: #e8f0ff;
+		width: 750px;
+		height: 66.67px;
+		text-align: left;
+		color: #6f7276;
+		font-size: 15px;
+		font-weight: bold;
+		border: none;
+		padding-left: 25px;
+		border-radius: 5px;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	}
+	input:hover.text{
+		box-shadow: none;
+	}
+	input, button{
+		background-color: #566cf5;
+		width: 150px;
+		height: 66.67px;
+		text-align: center;
+		color: #cbcbcc;
+		font-size: 15px;
+		font-weight: bold;
+		border: none;
+		border-radius: 5px;
+		transition: 0.5s;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	}
+	input:hover.button, button:hover{
 		cursor: pointer;
 		box-shadow: none;
 		background-color: #566bf5a2;
 	}
-	input:active{
+	input:active.button, button:active{
 		cursor: none;
 		background-color: #6f7276;
 		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	}
-	.container-1{
-	  display: flex;
-	  flex-wrap: wrap;
-	  align-items: center;
-	  justify-content: space-around;
-	}
-	.flexbox-item-1{
-	  background-color: #566cf5;
-	  width: 17.5%;
-	  border-radius: 10px;
-	  padding: 0px 25px 0px 25px;
-	  margin: 25px 15px 25px 15px;
-	  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	}
-	a:link, a:visited{
-    text-decoration: underline;
-    color: #cbcbcc;
-  }
-  a:hover{
-    text-decoration: none;
-  }
-  #mpaa-rank{
-	  margin-top: -30px;
-	  margin-bottom: -20px;
-  }
-  #reviewer-tag{
-	  margin-top: 35px;
-  }
-  #reviewee{
-	  margin-top: -25px;
-  }
-  #premeire{
-	  margin-bottom: -20px;
-  }
-  .center-1{
-	display: block;
-  	margin-top: 20px;
-	margin-left: auto;
-	margin-right: auto;
-	width: 50%;
-	border-radius: 10px;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  }
-  .searchbar{
-	display: flex;
-	flex-direction: column;
-  align-items: center;
-  }		
-.search-flexbox{
-	margin: 25px 0px 25px 0px;
-  }
-  .text{
-	background-color: #e8f0ff;
-	width: 750px;
-	height: 66.67px;
-	text-align: left;
-	  color: #6f7276;
-	font-size: 15px;
-	font-weight: bold;
-	border: none;
-	padding-left: 25px;
-	border-radius: 5px;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-input:hover.text{
-	box-shadow: none;
-}
-input, button{
-	background-color: #566cf5;
-	width: 150px;
-	height: 66.67px;
-	text-align: center;
-	  color: #cbcbcc;
-	font-size: 15px;
-	font-weight: bold;
-	border: none;
-	border-radius: 5px;
-	transition: 0.5s;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-input:hover.button, button:hover{
-	cursor: pointer;
-	box-shadow: none;
-	background-color: #566bf5a2;
-}
-input:active.button, button:active{
-	cursor: none;
-	background-color: #6f7276;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
 </style>
 
 <title>Reviews</title>
@@ -179,24 +169,27 @@ input:active.button, button:active{
 			</form>
 		<br>
 		<br>
-	<section class="searchbar">
-	<form class="search-flexbox" action="/Reviews" method="get">
-	    <input class="text" type="text" name="review_search" placeholder="Movie reviews...">
-	    <input class="button" type="submit" value="Search">
-	</form>
-</section>
-<br>
-<br>
+
 		<h2><i>There will be<br>a logo here<br>eventually...</i></h2><br>
 		<h1>Reviews</h1><br>
-		<h2><i><b>Find cast & crew info...</b></i></h2><br>
+		<h2><i><b>Find cast & crew info...</b></i></h2>
+
+		<section class="searchbar">
+			<form class="search-flexbox" action="/Reviews" method="get">
+				<input class="text" type="text" name="review_search" placeholder="Movie reviews...">
+				<input class="button" type="submit" value="Search">
+			</form>
+		</section>
+
+		<br><br><br>
+
 		<h1>Results</h1>
 
 		<section class="container-1">
 			<% data['results'].forEach(function(movie){ %>
 			<div class="flexbox-item-1">
 
-	    <h3><i><%= movie['display_title'] %></i></h3><br>
+	    <h3><i><%= movie['display_title'] %></i></h3>
 
 		<div>
 		<%		var criticsPick = movie['critics_pick']; %>
@@ -206,8 +199,6 @@ input:active.button, button:active{
 				<%}%>
 			<img src="<%= image %>" onerror=this.src=" " class="center-1">
 		</div>
-		<br>
-		<br>
 		<br>
 
 	<div id="mpaa-rank">

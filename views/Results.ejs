@@ -66,16 +66,6 @@
 		transition: 0.5s;
 		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	}
-	input:hover{
-		cursor: pointer;
-		box-shadow: none;
-		background-color: #566bf5a2;
-	}
-	input:active{
-		cursor: none;
-		background-color: #6f7276;
-		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	}
 	.center-1{
 	  	display: block;
 		margin-top: 20px;
@@ -117,17 +107,17 @@
 	.searchbar{
 		display: flex;
 		flex-direction: column;
-	  align-items: center;
-  	}		
+  		align-items: center;
+	}		
 	.search-flexbox{
 		margin: 25px 0px 25px 0px;
-  	}
-	  .text{
+	}
+	.text{
 		background-color: #e8f0ff;
 		width: 750px;
 		height: 66.67px;
 		text-align: left;
-	  	color: #6f7276;
+		color: #6f7276;
 		font-size: 15px;
 		font-weight: bold;
 		border: none;
@@ -137,6 +127,7 @@
 	}
 	input:hover.text{
 		box-shadow: none;
+		color: auto;
 	}
 	input, button{
 		background-color: #566cf5;
@@ -169,21 +160,22 @@
 
 	<form method="get" action="/">
 		<button type="submit">Home</button>
-		</form>
-	<br>
-	<br>
-	<section class="searchbar">
-	<form class="search-flexbox" action="/Results" method="get">
-	    <input class="text" type="text" name="search" placeholder="General movie info...">
-	    <input class="button" type="submit" value="Search">
 	</form>
-	</section>
 	<br>
 	<br>
 
 	<h2><i>There will be<br>a logo here<br>eventually...</i></h2><br>
 	<h1>General Info</h1><br>
-	<h2><i><b>Find general movie info...</b></i></h2><br>
+	<h2><i><b>Find general movie info...</b></i></h2>
+
+	<section class="searchbar">
+		<form class="search-flexbox" action="/Results" method="get">
+			<input class="text" type="text" name="search" placeholder="General movie info...">
+			<input class="button" type="submit" value="Search">
+		</form>
+	</section>
+
+	<br><br><br>
 
 	<h1>Results</h1>
   

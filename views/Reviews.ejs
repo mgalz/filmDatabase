@@ -63,11 +63,16 @@
 	}
 	.flexbox-item-1{
 	  	background-color: #566cf5;
-	  	width: 17.5%;
+	  	width: 25%;
 	  	border-radius: 10px;
 	  	padding: 0px 25px 0px 25px;
 	  	margin: 25px 15px 25px 15px;
 	  	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	}
+	@media only screen and (max-width: 600px) {
+  	.flexbox-item-1{
+    width: 66.67%;
+  	}
 	}
 	a:link, a:visited{
     	text-decoration: underline;
@@ -105,6 +110,11 @@
 	}		
 	.search-flexbox{
 		margin: 25px 0px 25px 0px;
+	}
+	@media only screen and (max-width: 600px) {
+  	.search-flexbox{
+		margin: 25px 55px 25px 0px;
+  	}
 	}
 	.search-flexbox-2{
 		margin: -10px 0px 25px 0px;
@@ -175,8 +185,8 @@
 
 		<section class="searchbar">
 			<div class="search-flexbox">
-			<form action="/Results" method="get">
-				<input class="text" type="text" name="search" placeholder="Search by title...">
+			<form action="/Reviews" method="get">
+				<input class="text" type="text" name="review_search" placeholder="Search by title...">
 			</div>
 			<div class="search-flexbox-2">
 				<input class="button" type="submit" value="Search">

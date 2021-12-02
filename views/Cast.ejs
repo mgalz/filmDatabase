@@ -32,7 +32,7 @@
 	h4{
 		text-align: left;
 		color: #cbcbcc;
-		font-size: 24px;
+		font-size: 20px;
 		margin-top: 10px;
 		margin-bottom: 10px;
 	}
@@ -68,11 +68,16 @@
 	}
 	.C1-box-1{
 	  	background-color: #566cf5;
-	  	width: 15%;
+	  	width: 22.5%;
 	  	border-radius: 10px;
 	  	padding: 0px 25px 0px 25px;
 	  	margin: 25px 15px 25px 15px;
 	  	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	}
+	@media only screen and (max-width: 600px) {
+  	.C1-box-1{
+    width: 50%;
+  	}
 	}
 	.container-2{
 	  	display: flex;
@@ -87,12 +92,10 @@
 	  	margin: 25px 25px 25px 25px;
 	  	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	}
-	.C2-box-2{
-		background-color: #566cf5;
-	  	border-radius: 10px;
-	  	padding: 15px 35px 15px 35px;
-	  	margin: 25px 25px 25px 25px;
-	  	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	@media only screen and (max-width: 600px) {
+  	.C2-box-1{
+    width: 75%;
+  	}
 	}
 	.cast-crew{
 	  	background-color: #566cf5;
@@ -102,40 +105,45 @@
 	  	margin: 25px 25px -15px 25px;
 	  	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	}
-	#actors{
+	@media only screen and (max-width: 600px) {
+  	.cast-crew{
+    	width: 30%;
+  	}
+	}
+	.actors{
 		margin-top: 2.5px;
 		margin-bottom: 2.5px;
 		margin-right: 100px;
+	}
+	@media only screen and (max-width: 600px) {
+  	.actors{
+		margin-right: 25px;
+  	}
 	}
 	#characters{
 		margin-top: 2.5px;
 		margin-bottom: 2.5px;
 		margin-right: 75px;
 	}
-	#popularity{
+	@media only screen and (max-width: 600px) {
+  	#characters{
+		margin-right: 50px;
+  	}
+	}
+	#job{
 		margin-top: 2.5px;
 		margin-bottom: 2.5px;
 		margin-right: 75px;
 	}
-	#actors-2{
-		margin-top: 2.5px;
-		margin-bottom: 2.5px;
-		margin-right: 100px;
+	@media only screen and (max-width: 600px) {
+  	#job{
+		margin-right: 25px;
+  	}
 	}
-	#characters-2{
+	.popularity{
 		margin-top: 2.5px;
 		margin-bottom: 2.5px;
 		margin-right: 75px;
-	}
-	#popularity-2{
-		margin-top: 2.5px;
-		margin-bottom: 2.5px;
-		margin-right: 75px;
-	}
-	#department{
-		margin-top: 2.5px;
-		margin-bottom: 2.5px;
-		margin-right: 125px;
 	}
 	#title{
 		margin-top: 15px;
@@ -163,6 +171,11 @@
 	}		
 	.search-flexbox{
 		margin: 25px 0px 25px 0px;
+	}
+	@media only screen and (max-width: 600px) {
+  	.search-flexbox{
+		margin: 25px 55px 25px 0px;
+  	}
 	}
 	.search-flexbox-2{
 		margin: -10px 0px 25px 0px;
@@ -242,8 +255,8 @@
 
 	<section class="searchbar">
 		<div class="search-flexbox">
-		<form action="/Results" method="get">
-			<input class="text" type="text" name="search" placeholder="Search by title...">
+		<form action="/Cast" method="get">
+			<input class="text" type="text" name="cast_search" placeholder="Search by title...">
 		</div>
 		<div class="search-flexbox-2">
 			<input class="button" type="submit" value="Search">
@@ -288,9 +301,9 @@
 			</tr>
 			<% data.info['cast'].forEach(function(person){ %>
 			<tr>
-	   		<td><p id="actors"><%= person['name'] %></p></td>
+	   		<td><p class="actors"><%= person['name'] %></p></td>
 	    	<td><p id="characters"><%= person['character'] %></p></td>
-        	<td><p id="popularity"><%= person['popularity'] %></p></td>
+        	<td><p class="popularity"><%= person['popularity'] %></p></td>
 			</tr>
 			<% }) %>
 		</table>
@@ -308,20 +321,18 @@
 		<h3><u>Crew</u></h3>
 	</div>
 
-<div class="C2-box-2">
+<div class="C2-box-1">
 		<table>
 			<tr>
 			<th><h4><u>Name</u></h4></th>
 			<th><h4><u>Position</u></h4></th>
-			<th><h4><u>Department</u></h4></th>
 			<th><h4><u>Popularity</u></h4></th>
 			</tr>
 			<% data.info['crew'].forEach(function(person){ %>
 			<tr>
-	   		<td><p id="actors-2"><%= person['name'] %></p></td>
-	    	<td><p id="characters-2"><%= person['job'] %></p></td>
-			<td><p id="department"><%= person['department'] %></p></td>
-        	<td><p id="popularity-2"><%= person['popularity'] %></p></td>
+	   		<td><p class="actors"><%= person['name'] %></p></td>
+	    	<td><p id="job"><%= person['job'] %></p></td>
+        	<td><p class="popularity"><%= person['popularity'] %></p></td>
 			</tr>
 			<% }) %>
 		</table>

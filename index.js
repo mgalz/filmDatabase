@@ -18,6 +18,10 @@ app.use(express.static('images')); // sets 'images' folder for image use in .ejs
 app.get('/', async function(req, res){
     
     // Box Office Info, direct from API
+
+    var timestamp = new Date();
+    console.log(timestamp);
+
     var params = 'https://imdb-api.com/en/API/BoxOffice/' + imdb_KEY;
 
     await request(params, async function(err, resp, body){

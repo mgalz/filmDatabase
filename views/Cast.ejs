@@ -11,6 +11,11 @@
 	  	margin-top: 2.5px;
 	  	margin-bottom: -15px;
 	}
+	@media only screen and (max-width: 600px) {
+  	p{
+		font-size: 12px;
+  	}
+	}
 	h1{
 	  	text-align: center;
 	  	color: #cbcbcc;
@@ -35,6 +40,12 @@
 		font-size: 20px;
 		margin-top: 10px;
 		margin-bottom: 10px;
+	}
+	@media only screen and (max-width: 600px) {
+  	h4{
+		font-size: 16px;
+		margin-left: -10px;
+  	}
 	}
 	h5{
 		text-align: center;
@@ -103,7 +114,7 @@
 	}
 	@media only screen and (max-width: 600px) {
   	.C2-box-1{
-    width: 75%;
+    width: 80%;
   	}
 	}
 	.cast-crew{
@@ -125,34 +136,30 @@
 		margin-right: 100px;
 	}
 	@media only screen and (max-width: 600px) {
-  	.actors{
-		margin-right: 25px;
+	.actors{
+    	margin-right: 50px;
+		margin-left: -10px;
   	}
 	}
-	#characters{
+	#characters, #job{
 		margin-top: 2.5px;
 		margin-bottom: 2.5px;
-		margin-right: 75px;
+		margin-right: 100px;
 	}
 	@media only screen and (max-width: 600px) {
-  	#characters{
-		margin-right: 50px;
-  	}
-	}
-	#job{
-		margin-top: 2.5px;
-		margin-bottom: 2.5px;
-		margin-right: 75px;
-	}
-	@media only screen and (max-width: 600px) {
-  	#job{
-		margin-right: 25px;
+	#characters, #job{
+    	margin-right: 50px;
+		margin-left: -10px;
   	}
 	}
 	.popularity{
 		margin-top: 2.5px;
 		margin-bottom: 2.5px;
-		margin-right: 75px;
+	}
+	@media only screen and (max-width: 600px) {
+	.popularity{
+		margin-left: -10px;
+  	}
 	}
 	#title{
 		margin-top: 15px;
@@ -177,7 +184,17 @@
 		display: flex;
 		flex-direction: column;
   		align-items: center;
-	}		
+	}
+	.home-button-item{
+		margin-bottom: -7px;
+	}
+	@media only screen and (max-width: 600px) {
+  	.home-button{
+		display: flex;
+		flex-direction: column;
+  		align-items: center;
+  	}
+	}	
 	.search-flexbox{
 		margin: 25px 0px 25px 0px;
 	}
@@ -211,6 +228,7 @@
 	}
 	input, button{
 		background-color: #566cf5;
+		margin-top: 0px;
 		width: 150px;
 		height: 66.67px;
 		text-align: center;
@@ -251,12 +269,16 @@
 <title>Cast & Crew</title>
 </head>
 <body>
+	<main>
+	<section class="home-button">
+		<div class="home-button-item">
 	<form method="get" action="/">
-	<button type="submit">Home</button>
+	<button class="spacing" type="submit">Home</button>
 	</form>
+		</div>
+	</section>
 
-	<br><br>
-
+	<br>
 
 	<section class="searchbar">
 	<img id="main-logo" src="/logo.png" alt="FSM Logo" width="15%" height="15%"></a>

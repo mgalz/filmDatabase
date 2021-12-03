@@ -107,16 +107,26 @@
 		display: flex;
 		flex-direction: column;
   		align-items: center;
-	}		
+	}
+	@media only screen and (max-width: 600px) {
+  	.home-button{
+		display: flex;
+		flex-direction: column;
+  		align-items: center;
+  	}
+	}			
   </style>
   
   <title>Box Office</title>
   </head>
   <body>
   <main>
+	  
+<div class="home-button">
   <input type="button" onclick="history.back();" value="Home">
+  </div>
 
-  <br><br><br>
+  <br><br>
 
   <section class="logo">
 	<img id="main-logo" src="/logo.png" alt="FSM Logo" width="15%" height="15%"></a>

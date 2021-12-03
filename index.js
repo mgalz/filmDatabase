@@ -15,7 +15,7 @@ app.set('view engine', 'ejs'); // sets view engine for .ejs files
 app.use(express.static('images')); // sets 'images' folder for image use in .ejs files
 
 // Home 'Search' Page
-app.get('/', async function(req, res){
+app.get('/', function(req, res){
     
     // Box Office Info, direct from API
 
@@ -24,12 +24,12 @@ app.get('/', async function(req, res){
 
     var params = 'https://imdb-api.com/en/API/BoxOffice/' + imdb_KEY;
 
-    await request(params, async function(err, resp, body){
+    request(params, async function(err, resp, body){
         if(!err && resp.statusCode == 200){
               
             var imdbdata = JSON.parse(body);
             
-            await res.render('Search', {data: imdbdata});
+            res.render('Search', {data: imdbdata});
         }
     });
 });
@@ -81,7 +81,8 @@ app.get('/Results', function(req, res){
 });
 
 // Box Office Page, Mike C., using MongoDB
-app.get('/BoxOffice', function(req, res){
+// Bypassing API for prresentation - API calls were reached*
+app.get('/BoxOffice', async function(req, res){
 
     var params = 'https://imdb-api.com/en/API/BoxOffice/' + imdb_KEY;
 

@@ -2,21 +2,26 @@
 
 <style>
 	body {
-	  font-family: Arial, sans-serif;
-	  background-color: #36393f;
+	  	font-family: Arial, sans-serif;
+	  	background-color: #36393f;
 	}
 	p{
-	  text-align: center;
-	  color: #cbcbcc;
-	  font-size: 16px;
-	  margin-top: 40px;
-	  margin-bottom: -15px;
+	  	text-align: center;
+	  	color: #cbcbcc;
+	  	font-size: 16px;
+	  	margin-top: 40px;
+	  	margin-bottom: -15px;
 	}
 	h1{
-	  text-align: center;
-	  color: #cbcbcc;
-	  margin-top: 2.5px;
-	  margin-bottom: 2.5px;
+	  	text-align: center;
+	  	color: #cbcbcc;
+	  	margin-top: 2.5px;
+	  	margin-bottom: 2.5px;
+	}
+	@media only screen and (max-width: 600px) {
+	h1{
+		font-size: 20px;
+  	}
 	}
 	h2{
 		text-align: center;
@@ -53,23 +58,35 @@
 		margin-left: auto;
 		margin-right: auto;
 	  }
-	  .logo{
+	.logo{
 		display: flex;
 		flex-direction: column;
   		align-items: center;
-	}	
+	}
+	@media only screen and (max-width: 600px) {
+	#main-logo{
+		width: 50%;
+		height: 50%
+  	}
+	}
+	@media only screen and (max-width: 600px) {
+	#too-many-results{
+		width: 25%;
+		height: 25%
+  	}
+	}
 </style>
 
 <title>Error</title>
 </head>
 <body>
-    <br><br><br>
+    <br>
 	<div class="logo">
 		<img id="main-logo" src="/logo.png" alt="FSM Logo" width="15%" height="15%"></a>
 	</div>
 <p><h1>Sorry! :(<br><br>There's too many results to display for that search!<br><br>Try typing in your movie title exactly!</h1></p>
 <br>
-<img src="/too_many_results.png" alt="too many results" class="center" width=200 height=200><br><br><br>
+<img id="too-many-results" src="/too_many_results.png" alt="too many results" class="center" width=200 height=200><br><br>
 <input class="center" type="button" onclick="history.back();" value="Go Back">
     </body>
     </html>

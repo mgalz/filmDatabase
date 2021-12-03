@@ -36,6 +36,9 @@
 		border-radius: 10px;
 		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	}
+	#main-logo{
+		box-shadow: none;
+	}
 	img:hover{
 		box-shadow: none;
 	}
@@ -94,6 +97,11 @@
 		margin-top: -20px;
 		margin-bottom: 0px;
 	}
+	.logo{
+		display: flex;
+		flex-direction: column;
+  		align-items: center;
+	}		
   </style>
   
   <title>Box Office</title>
@@ -104,9 +112,11 @@
 
   <br><br><br>
 
-  <h2><i>There will be<br>a logo here<br>eventually...</i></h2><br>
+  <section class="logo">
+	<img id="main-logo" src="/logo.png" alt="FSM Logo" width="15%" height="15%"></a>
   <h1>Box Office</h1><br>
   <h2><i><b>Find weekly box office info...</b></i></h2><br>
+  </section>
 
   <h1>Top 10</h1>
 

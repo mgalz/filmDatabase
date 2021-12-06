@@ -54,6 +54,8 @@ app.get('/', async function(req, res){
 
     var imdb_mongoData = results[0];
 
+    await client.close();
+
     res.render('Search', {data: imdb_mongoData});
     }
     else {
@@ -168,6 +170,8 @@ app.get('/BoxOffice', async function(req, res){
     var results = await dbo.collection("boxOffice").find({}).sort({_id:1}).limit(1).toArray();
 
     var imdb_mongoData = results[0];
+
+    await client.close();
 
     res.render('BoxOffice', {data: imdb_mongoData});
     }

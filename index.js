@@ -20,6 +20,7 @@ app.get('/', async function(req, res){
     // Box Office Info for Home Page
 
     var timestamp = new Date();
+    console.log(timestamp);
     var time = timestamp.toString();
     console.log(time);
 

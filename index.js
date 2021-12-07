@@ -21,7 +21,7 @@ app.get('/', async function(req, res){
 
     var timestamp = new Date();
     console.log(timestamp);
-    var time = timestamp.toString();
+    var time = timestamp.toUTCString();
     console.log(time);
 
     var timeObj =
@@ -138,7 +138,7 @@ app.get('/Results', function(req, res){
 app.get('/BoxOffice', async function(req, res){
 
     var timestamp = new Date();
-    var time = timestamp.toString();
+    var time = timestamp.toUTCString();
     console.log(time);
 
     var timeObj =

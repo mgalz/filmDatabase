@@ -134,7 +134,6 @@ app.get('/Results', function(req, res){
 });
 
 // Box Office Page, Mike C., using MongoDB
-// Bypassing API for prresentation - API calls were reached*
 app.get('/BoxOffice', async function(req, res){
 
     var timestamp = new Date();

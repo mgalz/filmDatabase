@@ -1,7 +1,12 @@
+//app-2.js runs all APIs directly other than Box Office which uses Mongo in addition
+//this is to eliminate the possibility of meeting reached calls for this API in a single day
+
 const express = require('express');
 const request = require('request');
+const { MongoClient } = require('mongodb');
 const { config } = require('./config.js');
 
+const url = config.MONGO_URL;
 const omdb_KEY = config.OMDB_API_KEY;
 const ny_times_KEY = config.NY_TIMES_API_KEY;
 const tmdb_KEY = config.TMDB_API_KEY;
@@ -15,17 +20,74 @@ app.use(express.static('images')); // sets 'images' folder for image use in .ejs
 // Home 'Search' Page
 app.get('/', async function(req, res){
     
-    // Box Office Info
-    var params = 'https://imdb-api.com/en/API/BoxOffice/' + imdb_KEY;
+    // Box Office Info for Home Page
 
-    await request(params, async function(err, resp, body){
-        if(!err && resp.statusCode == 200){
-              
-            var imdbdata = JSON.parse(body);
-            
-            await res.render('Search', {data: imdbdata});
-        }
-    });
+    var timestamp = new Date();
+    console.log(timestamp);
+    var time = timestamp.toUTCString();
+    console.log(time);
+
+    var timeObj =
+        {
+            "timestamp": time
+        };
+
+    var client = await MongoClient.connect(url, {useNewUrlParser: true});
+    var dbo = await client.db("Cluster0");
+    
+    var mongoTimeArr = await dbo.collection("boxOffice").find({}).sort({_id:-1}).limit(1).toArray();
+    var mongoTime = mongoTimeArr[0].timestamp;
+    console.log(mongoTime);
+
+    if (mongoTime == undefined) {
+        await dbo.collection("boxOffice").insertOne(timeObj);
+        var mongoTimeArr = await dbo.collection("boxOffice").find({}).sort({_id:-1}).limit(1).toArray();
+        var mongoTime = mongoTimeArr[0].timestamp;
+        console.log(mongoTime);
+    }
+
+    var currentTime = time.slice(0, 11);
+    var oldTime = mongoTime.slice(0, 11);
+    console.log(currentTime);
+    console.log(oldTime);
+
+    if (currentTime == oldTime) {
+    
+    var results = await dbo.collection("boxOffice").find({}).sort({_id:1}).limit(1).toArray();
+
+    var imdb_mongoData = results[0];
+
+    await client.close();
+
+    res.render('Search', {data: imdb_mongoData});
+    }
+    else {
+
+        var params = 'https://imdb-api.com/en/API/BoxOffice/' + imdb_KEY;
+
+        request(params, async function(err, resp, body){
+            if(!err && resp.statusCode == 200){
+
+                var imdbdata = JSON.parse(body);
+
+                var client = await MongoClient.connect(url, {useNewUrlParser: true});
+                var dbo = await client.db("Cluster0");
+                var myobj = await imdbdata;
+
+                await dbo.collection('boxOffice').deleteMany({});
+                await dbo.collection("boxOffice").insertOne(myobj);
+                await dbo.collection("boxOffice").insertOne(timeObj);
+
+                var results = await dbo.collection("boxOffice").find({}).sort({_id:1}).limit(1).toArray();
+
+                await client.close();
+
+                var imdb_mongoData = await results[0];
+
+                res.render('Search', {data: imdb_mongoData});
+            } 
+        });
+    }
 });
 
 // General Film Info. Search Page, Mike G., direct from API
@@ -61,19 +123,75 @@ app.get('/Results', function(req, res){
     });
 });
 
-// Box Office Page, Mike C., direct from API
-app.get('/BoxOffice', function(req, res){
+// Box Office Page, Mike C., using MongoDB
+app.get('/BoxOffice', async function(req, res){
 
-    var params = 'https://imdb-api.com/en/API/BoxOffice/' + imdb_KEY;
+    var timestamp = new Date();
+    var time = timestamp.toUTCString();
+    console.log(time);
 
-    request(params, async function(err, resp, body){
-        if(!err && resp.statusCode == 200){
+    var timeObj =
+        {
+            "timestamp": time
+        };
 
-            var imdbdata = JSON.parse(body);
+    var client = await MongoClient.connect(url, {useNewUrlParser: true});
+    var dbo = await client.db("Cluster0");
+    
+    var mongoTimeArr = await dbo.collection("boxOffice").find({}).sort({_id:-1}).limit(1).toArray();
+    var mongoTime = mongoTimeArr[0].timestamp;
+    console.log(mongoTime);
 
-            res.render('BoxOffice', {data: imdbdata});
-        } 
-    });
+    if (mongoTime == undefined) {
+        await dbo.collection("boxOffice").insertOne(timeObj);
+        var mongoTimeArr = await dbo.collection("boxOffice").find({}).sort({_id:-1}).limit(1).toArray();
+        var mongoTime = mongoTimeArr[0].timestamp;
+        console.log(mongoTime);
+    }
+
+    var currentTime = time.slice(0, 11);
+    var oldTime = mongoTime.slice(0, 11);
+    console.log(currentTime);
+    console.log(oldTime);
+
+    if (currentTime == oldTime) {
+    
+    var results = await dbo.collection("boxOffice").find({}).sort({_id:1}).limit(1).toArray();
+
+    var imdb_mongoData = results[0];
+
+    await client.close();
+
+    res.render('BoxOffice', {data: imdb_mongoData});
+    }
+    else {
+
+        var params = 'https://imdb-api.com/en/API/BoxOffice/' + imdb_KEY;
+
+        request(params, async function(err, resp, body){
+            if(!err && resp.statusCode == 200){
+
+                var imdbdata = JSON.parse(body);
+
+                var client = await MongoClient.connect(url, {useNewUrlParser: true});
+                var dbo = await client.db("Cluster0");
+                var myobj = await imdbdata;
+
+                await dbo.collection('boxOffice').deleteMany({});
+                await dbo.collection("boxOffice").insertOne(myobj);
+                await dbo.collection("boxOffice").insertOne(timeObj);
+
+                var results = await dbo.collection("boxOffice").find({}).sort({_id:1}).limit(1).toArray();
+
+                await client.close();
+
+                var imdb_mongoData = await results[0];
+
+                res.render('BoxOffice', {data: imdb_mongoData});
+            } 
+        });
+    }
+
 });
 
 // Cast Page, Cyril, direct from API
